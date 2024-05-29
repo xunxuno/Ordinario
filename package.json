@@ -21,7 +21,7 @@
     "express-session": "^1.18.0",
     "flash": "^1.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.9.7",
+    "mysql2": "^3.9.8",
     "nodemon": "^3.1.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",

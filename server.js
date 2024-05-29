@@ -5,12 +5,13 @@ const path = require('path');
 const router =require('./routes/routes');
 const flash = require('connect-flash');
 const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const SQLiteStore = require('connect-sqlite3')(session);
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const authMiddleware = require('./middlewares/authMiddleware');
 const bodyParser = require('body-parser');
+const db = require('./db');
 // tablas y mas
 
 //configura el cookie-parser
@@ -35,23 +36,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Configurar estrategia de autentificación local
-passport.use(new localStrategy(
-    async (username, password, done) => {
-        try {
-            const user = await usuarios.obtenerPorNombre(username);
-            if (!user) {
-                return done(null, false, { message: 'Usuario incorrecto '});
-            }
-            const passwordMatch = await authMiddleware.comparePassword(password, user.pasword_hash);
-            if (!passwordMatch) {
-                return done(null, false, { message: 'Contraseña incorrecta'});
-            }
-            return done(null, user);
-        } catch (err) {
-            return done(err);
-        }
+passport.use(new LocalStrategy(
+    (username, password, done) => {
+      db.obtenerUsuarioPorNombre(username, (err, user) => {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false, { message: 'Usuario incorrecto.' }); }
+        if (user.password !== password) { return done(null, false, { message: 'Contraseña incorrecta.' }); }
+        return done(null, user);
+      });
     }
-));
+  ));
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
