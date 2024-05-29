@@ -106,6 +106,17 @@ app.get('/logout', async (req, res) => {
     });
 })
 
+// Ruta para conectar con la API local
+app.get('/api/datos', async (req, res) => {
+    try {
+        const respuesta = await axios.get('http://localhost:3001/usuariosRoute'); // Cambia la URL al endpoint de tu API local
+        res.json(respuesta.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al obtener datos de la API local');
+    }
+});
+
 // Puerto en el que escucha el servidor
 const port = 3000;
 app.listen(port, () => {
