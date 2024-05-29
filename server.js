@@ -21,11 +21,11 @@ dotenv.config();
 
 // configura el Middleware para manejar sesiones
 app.use(session({
-    secret: process.env.ACCESS_TOKEN_SECRET, // Clave secreta para firmar la cookie de sesion
+    secret: process.env.ACCESS_TOKEN_SECRET, // Clave secreta para firmar la cookie de sesión
     resave: false,
     saveUninitialized: false,
-    store: new SQLite({db: 'sesionsDB.sqlite', table: 'sessions'})
-}));
+    store: new SQLiteStore({ db: 'sessionsDB.sqlite', table: 'sessions' }) // Almacena las sesiones en una base de datos SQLite
+  }));
 
 //configura connect-flash
 app.use(flash());
@@ -107,5 +107,13 @@ app.get('/logout', async (req, res) => {
             }
             console.log('req.sessionStore.clear finalizado correctamente');
         });
+        res.clearCookie('token');
+        res.redirect('/');
     });
 })
+
+// Puerto en el que escucha el servidor
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Servidor iniciado en http://localhost:${port}`);
+});
