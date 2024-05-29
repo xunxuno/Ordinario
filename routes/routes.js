@@ -1,6 +1,7 @@
 // routes/routes.js
 const express = require('express');
 const router = express.Router();
+const authMiddleware = require('../middlewares/authMiddleware'); 
 
 // Importa las rutas específicas
 const index = require('./index');

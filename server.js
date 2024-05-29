@@ -2,17 +2,15 @@ const express = require('express');
 const app = express();
 const session = require('express-session');
 const path = require('path');
-const router =require('./routes/routes');
+const router = require('./routes/routes');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const SQLiteStore = require('connect-sqlite3')(session);
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const authMiddleware = require('./middlewares/authMiddleware');
 const bodyParser = require('body-parser');
 const db = require('./db');
-// tablas y mas
 
 //configura el cookie-parser
 app.use(cookieParser());
@@ -75,6 +73,8 @@ app.set('views' , path.join(__dirname, 'views'));
 // Middleware para procesar los archivos estaticos en la carpeta 'public'
 app.use(express.static('public'));
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/', router);
 
