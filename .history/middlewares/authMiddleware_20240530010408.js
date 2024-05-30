@@ -62,6 +62,6 @@ async function getHash(passwordString) {
 module.exports = {
     authenticate,
     generateToken,
-    //encryptData,
+    encryptData,
     getHash
 };

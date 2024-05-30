@@ -12,7 +12,7 @@ async function authenticate(req, res, next) {
         return res.redirect('/login');
     }
 
-    /*try {
+    try {
         // Verifica el token usando la clave privada RSA del entorno
         const decoded = jwt.verify(token, process.env.RSA_PRIVATE_KEY);
 
@@ -24,7 +24,7 @@ async function authenticate(req, res, next) {
     } catch (err) {
         // Si hay un error en la verificación del token, redirige al usuario al login
         return res.redirect('/login');
-    }*/
+    }
 }
 
 // Función para generar un token JWT
@@ -35,7 +35,7 @@ function generateToken(data, expirationTime) {
 
 
 // Función para encriptar datos
-/*function encryptData(text) {
+function encryptData(text) {
     // Se obtiene la clave privada AES del entorno y se convierte en un buffer
     const key = Buffer.from(process.env.AES_PRIVATE_KEY, 'hex');
     // Se genera un vector de inicialización aleatorio de 16 bytes
@@ -47,7 +47,7 @@ function generateToken(data, expirationTime) {
     encrypted += cipher.final('hex');
     // Se devuelve el IV, la AuthTag y el texto encriptado, separados por ':'
     return iv.toString('hex') + ':' + cipher.getAuthTag().toString('hex') + ':' + encrypted;
-}*/
+}
 
 // Función asincrónica para obtener el hash de una contraseña
 async function getHash(passwordString) {
@@ -62,6 +62,6 @@ async function getHash(passwordString) {
 module.exports = {
     authenticate,
     generateToken,
-    //encryptData,
+    encryptData,
     getHash
 };
