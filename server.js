@@ -11,6 +11,7 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const db = require('./db');
+const axios = require('axios');
 
 //configura el cookie-parser
 app.use(cookieParser());
@@ -35,26 +36,37 @@ app.use(passport.session());
 
 // Configurar estrategia de autentificación local
 passport.use(new LocalStrategy(
-    (username, password, done) => {
-      db.obtenerUsuarioPorNombre(username, (err, user) => {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false, { message: 'Usuario incorrecto.' }); }
-        if (user.password !== password) { return done(null, false, { message: 'Contraseña incorrecta.' }); }
-        return done(null, user);
-      });
+    async (username, password, done) => {
+        try {
+            const response = await axios.get('http://localhost:3002/api/usuarios', { params: { nombre: username } });
+            const user = response.data;
+
+            if (!user) {
+                return done(null, false, { message: 'Usuario incorrecto.' });
+            }
+
+            if (user.password !== password) {
+                return done(null, false, { message: 'Contraseña incorrecta.' });
+            }
+
+            return done(null, user);
+        } catch (err) {
+            return done(err);
+        }
     }
-  ));
+));
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser(async(id, done) => {
-    await usuarios.obtenerPorId(id).then((user) => {
-        done(null , user);
-    }).catch((error) => {
+passport.deserializeUser(async (id, done) => {
+    try {
+        const response = await axios.get(`http://localhost:3002/api/usuarios/${id}`);
+        done(null, response.data);
+    } catch (error) {
         done(error, null);
-    });
+    }
 });
 
 // Creacion de la variable para almacenar el caché
@@ -109,13 +121,14 @@ app.get('/logout', async (req, res) => {
 // Ruta para conectar con la API local
 app.get('/api/datos', async (req, res) => {
     try {
-        const respuesta = await axios.get('http://localhost:3001/usuariosRoute'); // Cambia la URL al endpoint de tu API local
+        const respuesta = await axios.get('http://localhost:3002/usuarios');
         res.json(respuesta.data);
     } catch (error) {
         console.error(error);
         res.status(500).send('Error al obtener datos de la API local');
     }
 });
+
 
 // Puerto en el que escucha el servidor
 const port = 3000;
