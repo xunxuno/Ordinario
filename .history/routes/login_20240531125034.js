@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 
   try {
     await usuarioController.logearUsuario(nombre, password);
-    console.log("logeado correctamente");
+    console.log(usuario, "logeado correctamente");
     res.redirect('/');
   }
   catch (error){

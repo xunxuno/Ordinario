@@ -34,10 +34,6 @@ async function logearUsuario(nombre, password) {
                 "password": password
             }
         });
-
-        console.log('Respuesta del servidor:', response.data); // Depura la respuesta del servidor
-        
-
         const usuario = response.data;
         return new Usuario(usuario.id, usuario.nombre, usuario.email, usuario.password_hash);
     } catch (error) {
@@ -45,7 +41,6 @@ async function logearUsuario(nombre, password) {
         throw error;
     }
 }
-
 
 module.exports = {
     registrarUsuario,

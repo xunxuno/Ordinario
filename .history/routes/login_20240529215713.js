@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const authMiddleware = require('../middlewares/authMiddleware'); // Middleware para proteger rutas
-const usuarioController = require('../controllers/usuarioController');
 
 // Rutas públicas
 router.get('/', (req, res) => {
@@ -10,18 +9,15 @@ router.get('/', (req, res) => {
 });
 
 // ruta POST
-router.post('/', async (req, res) => {
-  const { nombre, password} = req.body
-
-  try {
-    await usuarioController.logearUsuario(nombre, password);
-    console.log("logeado correctamente");
-    res.redirect('/');
-  }
-  catch (error){
-    console.error(error.message);
-    res.status(500).send('Error interno del servidor');
-  }
-});
+router.post('/', passport.authenticate('local', {
+    failureRedirect: '/login',
+    failureFlash: true
+  }), (req, res) => {
+    // Si se autentica correctamente, crea un token JWT
+    const token = authMiddleware.generateToken(req.user.id);
   
+    res.cookie('token', token, { httpOnly: true, secure: true });
+  
+    res.redirect('/index');
+  });
 module.exports = router;
