@@ -11,12 +11,10 @@ class Usuario {
 
 async function registrarUsuario(nombre, email, password) {
     try {
-        const response = await axios.post('http://localhost:3002/api/registrar', {
-            dataSegura: {
-                nombre,
-                email,
-                password
-            }
+        const response = await axios.post(`http://localhost:3002/api/registrar`, {
+            nombre,
+            email,
+            password
         });
         return response.data;
     } catch (error) {
@@ -24,7 +22,6 @@ async function registrarUsuario(nombre, email, password) {
         throw error;
     }
 }
-
 
 async function logearUsuario(nombre, password) {
     try {

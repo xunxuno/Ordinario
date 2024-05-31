@@ -9,29 +9,18 @@ class Usuario {
     }
 }
 
-async function registrarUsuario(nombre, email, password) {
+async function registrarUsuario(dataSegura) {
     try {
-        const response = await axios.post('http://localhost:3002/api/registrar', {
-            dataSegura: {
-                nombre,
-                email,
-                password
-            }
-        });
-        return response.data;
+        await axios.post(`http://localhost:3002/api/registrar`, { dataSegura });
     } catch (error) {
         console.error('Error al registrar usuario:', error);
         throw error;
     }
 }
 
-
-async function logearUsuario(nombre, password) {
+async function logearUsuario(dataSegura) {
     try {
-        const response = await axios.post(`http://localhost:3002/api/login`, {
-            nombre,
-            password
-        });
+        const response = await axios.post(`${process.env.BASE_URL}/usuarios/login`, { dataSegura });
         const usuario = response.data;
         return new Usuario(usuario.id, usuario.nombre, usuario.email, usuario.password_hash);
     } catch (error) {
