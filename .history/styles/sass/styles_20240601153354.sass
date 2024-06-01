@@ -35,59 +35,24 @@ nav ul li a
         color: $mainColor
 
 /* Formulario con slides */
-
-
-
 form 
     max-width: 400px
     margin: 50px auto
     padding: 20px
     border: 1px solid #ccc
     border-radius: 10px
-    position: relative
-    overflow: hidden
-    height: 250px
 
 
 .slide 
-    opacity: 0
-    position: absolute
-    width: 100%
-    top: 0
-    left: 0
-    transition: opacity 0.5s, transform 0.5s
-    z-index: 0
+    display: none
 
 
 .slide.active 
-    opacity: 1
-    z-index: 1
+    display: block
 
 
-.slide-enter 
-    transform: translateX(100%)
-    z-index: 2
-
-
-.slide-enter-prev 
-    transform: translateX(-100%)
-    z-index: 2
-
-
-.slide-enter-active 
-    transform: translateX(0)
-
-
-.slide-exit 
-    transform: translateX(0)
-    z-index: 1
-
-
-.slide-exit-active 
-    transform: translateX(-100%)
-
-
-
+button 
+    margin-top: 10px
 
 
 
