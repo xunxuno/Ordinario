@@ -4,12 +4,12 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 
 function verifyToken(req, res, next) {
-    const tokenlog = req.cookies.token;
-    if (!tokenlog) {
+    const token = req.cookies.token;
+    if (!token) {
         return res.status(401).send('Token no proporcionado');
     }
 
-    jwt.verify(tokenlog, process.env.JWT_SECRET, (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(401).send('Token no válido');
         }

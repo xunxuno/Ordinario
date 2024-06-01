@@ -35,12 +35,13 @@ async function logearUsuario(nombre, password) {
             }
         });
         const token = response.data.token; //recibir el token de la api
-        console.log('Token recibido:', token);
+        res.cookie('token', token, { httpOnly: true }); // Configurar la cookie
+        console.log('Token almacenado en cookie:', token);
         console.log('Respuesta del servidor:', response.data); // Depura la respuesta del servidor
         
 
         const usuario = response.data;
-        return { token, usuario: new Usuario(usuario.id, usuario.nombre, usuario.email, usuario.password_hash) };
+        return new Usuario(usuario.id, usuario.nombre, usuario.email, usuario.password_hash);
     } catch (error) {
         console.error('Error al obtener usuario por nombre:', error);
         throw error;

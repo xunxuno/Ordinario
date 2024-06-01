@@ -4,12 +4,12 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 
 function verifyToken(req, res, next) {
-    const tokenlog = req.cookies.token;
-    if (!tokenlog) {
+    const token = req.cookies.token;
+    if (!token) {
         return res.status(401).send('Token no proporcionado');
     }
 
-    jwt.verify(tokenlog, process.env.JWT_SECRET, (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(401).send('Token no válido');
         }
@@ -48,6 +48,21 @@ function generateToken(data, expirationTime) {
     return jwt.sign({ data }, process.env.RSA_PRIVATE_KEY, { algorithm: 'RS256', expiresIn: expirationTime });
 }
 
+
+// Función para encriptar datos
+/*function encryptData(text) {
+    // Se obtiene la clave privada AES del entorno y se convierte en un buffer
+    const key = Buffer.from(process.env.AES_PRIVATE_KEY, 'hex');
+    // Se genera un vector de inicialización aleatorio de 16 bytes
+    const iv = crypto.randomBytes(16);
+    // Se crea un cifrador usando el algoritmo AES-256-GCM, la clave y el IV
+    const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+    // Se encripta el texto en formato UTF-8 y se convierte a hexadecimal
+    let encrypted = cipher.update(text, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    // Se devuelve el IV, la AuthTag y el texto encriptado, separados por ':'
+    return iv.toString('hex') + ':' + cipher.getAuthTag().toString('hex') + ':' + encrypted;
+}*/
 
 // Función asincrónica para obtener el hash de una contraseña
 async function getHash(passwordString) {

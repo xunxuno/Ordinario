@@ -40,7 +40,7 @@ async function logearUsuario(nombre, password) {
         
 
         const usuario = response.data;
-        return { token, usuario: new Usuario(usuario.id, usuario.nombre, usuario.email, usuario.password_hash) };
+        return new Usuario(usuario.id, usuario.nombre, usuario.email, usuario.password_hash);
     } catch (error) {
         console.error('Error al obtener usuario por nombre:', error);
         throw error;

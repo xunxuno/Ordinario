@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
     res.cookie('token', token, { httpOnly: true, secure: true }); // Configurar la cookie
     console.log('Token almacenado en cookie:', token);
     console.log('Logeado correctamente');
-     res.redirect('/'); // Redirige a una ruta protegida después del login
+     res.redirect('/index'); // Redirige a una ruta protegida después del login
   }
   catch (error){
     console.error(error.message);
