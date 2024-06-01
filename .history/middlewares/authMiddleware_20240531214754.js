@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 function verifyToken(req, res, next) {
     const tokenlog = req.cookies.token;
     if (!tokenlog) {
+        //return res.status(401).send('Token no proporcionado');
         console.log('Token no proporcionado');
         return res.redirect('/login');
     }
