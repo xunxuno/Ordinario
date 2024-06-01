@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middlewares/authMiddleware');
 
-router.get('/',authMiddleware.redirectIfAuthenticated, (req, res) => {
+router.get('/', (req, res) => {
     res.render('registro', { title: 'Registro' });
 });
   
