@@ -1,3 +1,40 @@
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1E171F;
+}
+
+/* nav  */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 0;
+  transition: all;
+  transition-duration: 300ms;
+  border-bottom: 1px solid rgba(28, 22, 22, 0);
+}
+nav ul li a:hover {
+  border-bottom: 1px solid black;
+  color: #F7E025;
+}
+
 /* login */
 .loginContainer {
   margin-top: 40px;
