@@ -8,6 +8,10 @@ body {
   background-color: #1E171F;
 }
 
+h2 {
+  color: white;
+}
+
 /* nav  */
 nav {
   display: flex;
@@ -61,6 +65,10 @@ form {
   flex-shrink: 0;
 }
 
+label {
+  color: white;
+}
+
 button {
   margin-top: 10px;
 }
@@ -68,25 +76,21 @@ button {
 /* login */
 .loginContainer {
   margin-top: 40px;
+  align-items: center;
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #EFEFEF;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.form-group {
-  margin-bottom: 20px;
+.loginContainer h2 {
+  color: black;
 }
-
 .loginContainer label {
-  display: block;
-  margin-bottom: 5px;
-  color: #666;
+  color: black;
 }
-
-input[type=password] {
+.loginContainer input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -94,21 +98,41 @@ input[type=password] {
   border-radius: 5px;
 }
 
-/*input[type="email"] 
- *  width: 100%
- *  padding: 10px
- *  font-size: 16px
- *  border: 1px solid #ccc
- *  border-radius: 5px*/
+.form-group {
+  margin-bottom: 20px;
+}
+
+/*.loginContainer
+ *  label
+ *      display: block
+ *      margin-bottom: 5px
+ *      color: black*/
 /* Registro */
 .containerRegistro {
   margin-top: 40px;
   max-width: 400px;
+  height: auto;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #EFEFEF;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.containerRegistro h2 {
+  color: black;
+}
+.containerRegistro form {
+  height: auto;
+}
+.containerRegistro label {
+  color: black;
+}
+.containerRegistro input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=styles.css.map */
