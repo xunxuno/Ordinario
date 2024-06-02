@@ -3,7 +3,7 @@ extends layout
 block content
 
     .mainContainer
-        form#multiStepForm(action="/detalles_viaje", method="POST")
+        form#multiStepForm(action="/detalles-viaje", method="post")
             .slides-container
                 .slide.active
                     h2 Selecciona el destino de tu proxima aventura
@@ -50,8 +50,6 @@ block content
                     h2 Hospedaje
                     p Elije tu Hotel!
                     div#hotelesContainer
-                    label(for="noches") Noches de Hospedaje 
-                    input(type="number" id="noches" name="noches" required)
                     button(type="button" onclick="prevSlide()") Anterior
                     button(type="submit") Enviar
                 script(src="/script.js")
