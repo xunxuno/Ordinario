@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const hotelesPorDestino = {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const slidesContainer = document.querySelector('.slides-container');
+    const flightPriceInput = document.getElementById('flightPrice');
+    const hotelPriceInput = document.getElementById('hotelPrice');
+    const hotelOptions = {
         "bar": [
             { nombre: "Catalonia Park Guell", price: 1600  },
             { nombre: "Barcelona Princess", price: 4000  },
@@ -55,23 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
             { nombre: "ME London by Melia - Covent Garden", price: 11160 }
         ],
     
+        // Añadir más destinos y opciones de hotel según sea necesario
     };
 
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const slidesContainer = document.querySelector('.slides-container');
-
     function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
+        slides[currentSlide].classList.remove('active');
+        slides[index].classList.add('active');
         const offset = -index * 100;
         slidesContainer.style.transform = `translateX(${offset}%)`;
         currentSlide = index;
     }
 
     function nextSlide() {
-        const activeSlide = slides[currentSlide];
+        const activeSlide = document.querySelector('.slide.active');
         const requiredFields = activeSlide.querySelectorAll('[required]');
         let isSlideValid = true;
 
@@ -85,8 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (isSlideValid) {
-            if (currentSlide < slides.length - 1) {
-                showSlide(currentSlide + 1);
+            const nextIndex = Array.from(slides).indexOf(activeSlide) + 1;
+            if (nextIndex < slides.length) {
+                showSlide(nextIndex);
             }
         } else {
             alert('Por favor, completa todos los campos obligatorios antes de continuar.');
@@ -99,48 +101,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function updateFlightPrice() {
+        const selectedFlight = document.querySelector('input[name="fly"]:checked');
+        if (selectedFlight) {
+            const price = selectedFlight.getAttribute('data-price');
+            flightPriceInput.value = price;
+        }
+    }
+
     function updateHotelOptions() {
         const destination = document.getElementById('destino').value;
         const hotelsContainer = document.getElementById('hotelesContainer');
-        hotelsContainer.innerHTML = ''; // Limpiar el contenido previo antes de agregar nuevas opciones
-    
-        if (hotelesPorDestino[destination]) {
-            hotelesPorDestino[destination].forEach(hotel => {
+        hotelsContainer.innerHTML = '';
+
+        if (hotelOptions[destination]) {
+            hotelOptions[destination].forEach(hotel => {
                 const label = document.createElement('label');
-                label.setAttribute('for', hotel.nombre);
-                label.innerText = `${hotel.nombre} - $${hotel.price} MXN por noche`;
-    
+                label.setAttribute('for', hotel.name);
+                label.innerText = `${hotel.name} - $${hotel.price} MXN por noche`;
+                
                 const input = document.createElement('input');
                 input.type = 'radio';
-                input.id = hotel.nombre;
+                input.id = hotel.name;
                 input.name = 'hotel';
-                input.value = hotel.nombre;
+                input.value = hotel.name;
                 input.setAttribute('data-price', hotel.price);
                 input.required = true;
-    
+
+                label.appendChild(input);
                 hotelsContainer.appendChild(label);
-                hotelsContainer.appendChild(input);
                 hotelsContainer.appendChild(document.createElement('br'));
             });
         }
     }
 
-    // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
-    updateHotelOptions();
+    function updateHotelPrice() {
+        const selectedHotel = document.querySelector('input[name="hotel"]:checked');
+        if (selectedHotel) {
+            const price = selectedHotel.getAttribute('data-price');
+            hotelPriceInput.value = price;
+        }
+    }
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Formulario enviado');
-        // Aquí puedes agregar el código para enviar los datos a tu servidor
+        updateFlightPrice();
+        updateHotelPrice();
+        alert('Formulario enviado'); // Puedes reemplazar esto con la lógica para enviar los datos a tu servidor
+    });
+
+    document.querySelectorAll('input[name="fly"]').forEach(input => {
+        input.addEventListener('change', updateFlightPrice);
     });
 
     document.getElementById('destino').addEventListener('change', updateHotelOptions);
 
-    document.querySelectorAll('button[onclick="nextSlide()"]').forEach(button => {
-        button.addEventListener('click', nextSlide);
-    });
-    document.querySelectorAll('button[onclick="prevSlide()"]').forEach(button => {
-        button.addEventListener('click', prevSlide);
+    document.querySelectorAll('input[name="hotel"]').forEach(input => {
+        input.addEventListener('change', updateHotelPrice);
     });
 
     showSlide(currentSlide);

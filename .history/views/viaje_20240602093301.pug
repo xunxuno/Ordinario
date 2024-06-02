@@ -1,6 +1,7 @@
 extends layout 
 
 block content
+
     .mainContainer
         form#multiStepForm(action="/detalles_viaje", method="POST")
             .slides-container
@@ -24,16 +25,16 @@ block content
                     h2 Vuelos
                     p Selecciona tu clase de vuelo:
                     label(for="turista") Clase turista
-                    input(type="radio" id="turista" name="fly" value="turista" required)
+                    input(type="radio" id="turista" name="fly" value="turista" data-price="1200" required)
                     br
                     label(for="turistaSuperior") Clase turista superior
-                    input(type="radio" id="turistaSuperior" name="fly" value="turistaSuperior" required)
+                    input(type="radio" id="turistaSuperior" name="fly" value="turistaSuperior" data-price="1200" required)
                     br
                     label(for="business") Clase business
-                    input(type="radio" id="business" name="fly" value="business" required)
+                    input(type="radio" id="business" name="fly" value="business" data-price="1200" required)
                     br
                     label(for="primeraClase") Primera clase
-                    input(type="radio" id="primeraClase" name="fly" value="primeraClase" required)
+                    input(type="radio" id="primeraClase" name="fly" value="primeraClase" data-price="1200" required)
                     br
                     br
                     label(for="cantidad") Numero de boletos: 

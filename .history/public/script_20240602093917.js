@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const hotelesPorDestino = {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const slidesContainer = document.querySelector('.slides-container');
+    const hotelOptions = {
         "bar": [
             { nombre: "Catalonia Park Guell", price: 1600  },
             { nombre: "Barcelona Princess", price: 4000  },
@@ -53,13 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
             { nombre: "Sonder Camden Road", price: 3200 },
             { nombre: "Central London Luxury Studios", price: 1007 },
             { nombre: "ME London by Melia - Covent Garden", price: 11160 }
-        ],
-    
+        ]
     };
-
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const slidesContainer = document.querySelector('.slides-container');
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
@@ -102,14 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateHotelOptions() {
         const destination = document.getElementById('destino').value;
         const hotelsContainer = document.getElementById('hotelesContainer');
-        hotelsContainer.innerHTML = ''; // Limpiar el contenido previo antes de agregar nuevas opciones
-    
-        if (hotelesPorDestino[destination]) {
-            hotelesPorDestino[destination].forEach(hotel => {
+        hotelsContainer.innerHTML = '';
+
+        if (hotelOptions[destination]) {
+            hotelOptions[destination].forEach(hotel => {
                 const label = document.createElement('label');
                 label.setAttribute('for', hotel.nombre);
                 label.innerText = `${hotel.nombre} - $${hotel.price} MXN por noche`;
-    
+
                 const input = document.createElement('input');
                 input.type = 'radio';
                 input.id = hotel.nombre;
@@ -117,16 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.value = hotel.nombre;
                 input.setAttribute('data-price', hotel.price);
                 input.required = true;
-    
+
                 hotelsContainer.appendChild(label);
                 hotelsContainer.appendChild(input);
                 hotelsContainer.appendChild(document.createElement('br'));
             });
         }
     }
-
-    // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
-    updateHotelOptions();
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();

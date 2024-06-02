@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { nombre: "Central London Luxury Studios", price: 1007 },
             { nombre: "ME London by Melia - Covent Garden", price: 11160 }
         ],
-    
+    .
     };
 
     let currentSlide = 0;
