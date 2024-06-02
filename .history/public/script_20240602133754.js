@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[name="fly"]').forEach(radio => {
         radio.addEventListener('change', updateFlightPrices);
     });
-
+    //document.getElementById('cantidad').addEventListener('input', updateFlightPrices);
     document.getElementById('cantidad').addEventListener('input', function() {
         const cantidad = parseInt(this.value);
         if (cantidad < 1) {
@@ -191,14 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updateFlightPrices(); // Llama a la función para actualizar el precio del vuelo
     });
-    document.getElementById('noches').addEventListener('input', function() {
-        const noches = parseInt(this.value);
-        if (noches < 1) {
-            this.value = 1; // Establece el valor mínimo como 1 si se ingresa un valor menor
-        }
-        updateHotelPrices(); // Llama a la función para actualizar el precio del hotel
-    });
-    
 
 
     // Event listeners para los botones de siguiente y anterior
