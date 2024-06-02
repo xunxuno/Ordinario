@@ -183,8 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[name="fly"]').forEach(radio => {
         radio.addEventListener('change', updateFlightPrices);
     });
-    document.getElementById('cantidad').addEventListener('input', updateFlightPrices);
-
 
     // Event listeners para los botones de siguiente y anterior
     document.getElementById('nextSlideButton1').addEventListener('click', nextSlide);

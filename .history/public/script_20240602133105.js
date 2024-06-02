@@ -129,13 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Mostrar el precio total del vuelo en algún elemento HTML, por ejemplo:
             const flightPriceElement = document.getElementById('flightPrice');
             flightPriceElement.textContent = `$${totalPrice} MXN`;
-            flightPriceElement.style.display = 'inline'; // Mostrar el precio solo si se seleccionó la cantidad
-        } else {
-            const flightPriceElement = document.getElementById('flightPrice');
-            flightPriceElement.style.display = 'none'; // Ocultar el precio si la cantidad no se ha seleccionado
         }
     }
-    
     
 
     function updateHotelOptions() {
@@ -183,8 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[name="fly"]').forEach(radio => {
         radio.addEventListener('change', updateFlightPrices);
     });
-    document.getElementById('cantidad').addEventListener('input', updateFlightPrices);
-
 
     // Event listeners para los botones de siguiente y anterior
     document.getElementById('nextSlideButton1').addEventListener('click', nextSlide);
