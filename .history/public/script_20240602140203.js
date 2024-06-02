@@ -161,31 +161,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 hotelsContainer.appendChild(input);
                 hotelsContainer.appendChild(document.createElement('br'));
             });
-
-            // Agregar event listeners después de crear los elementos
-            document.querySelectorAll('input[name="hotel"]').forEach(radio => {
-                radio.addEventListener('change', updateHotelPrices);
-            });
         }
     }
-    // Función para actualizar los precios del hotel según la selección
     function updateHotelPrices() {
         const selectedHotel = document.querySelector('input[name="hotel"]:checked');
         const noches = parseInt(document.getElementById('noches').value);
-
+    
         if (selectedHotel && noches >= 1) {
             const hotelPrice = parseInt(selectedHotel.getAttribute('data-price'));
             const totalPrice = hotelPrice * noches;
-
+    
             const hotelPriceElement = document.getElementById('hotelPrice');
             hotelPriceElement.textContent = `$${totalPrice} MXN`;
-            hotelPriceElement.style.display = 'inline';
         } else {
             const hotelPriceElement = document.getElementById('hotelPrice');
-            hotelPriceElement.style.display = 'none';
+            hotelPriceElement.textContent = '';
         }
     }
     
+    document.getElementById('noches').addEventListener('input', updateHotelPrices);
+    
+    // Event listener para actualizar el precio del hotel al cambiar la selección de hotel
+    document.querySelectorAll('input[name="hotel"]').forEach(radio => {
+        radio.addEventListener('change', updateHotelPrices);
+    });
+    
+
+    // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
+    updateHotelOptions();
+    updateFlightPrices();
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -210,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updateFlightPrices(); // Llama a la función para actualizar el precio del vuelo
     });
-
     document.getElementById('noches').addEventListener('input', function() {
         const noches = parseInt(this.value);
         if (noches < 1) {
@@ -219,10 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateHotelPrices(); // Llama a la función para actualizar el precio del hotel
     });
     
-    
-    // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
-    updateHotelOptions();
-    updateFlightPrices();
 
 
     // Event listeners para los botones de siguiente y anterior

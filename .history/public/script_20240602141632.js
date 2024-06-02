@@ -186,6 +186,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    
+
+
+    
+
+
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();

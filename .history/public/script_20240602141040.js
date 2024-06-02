@@ -161,11 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 hotelsContainer.appendChild(input);
                 hotelsContainer.appendChild(document.createElement('br'));
             });
-
-            // Agregar event listeners después de crear los elementos
-            document.querySelectorAll('input[name="hotel"]').forEach(radio => {
-                radio.addEventListener('change', updateHotelPrices);
-            });
         }
     }
     // Función para actualizar los precios del hotel según la selección
@@ -179,13 +174,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const hotelPriceElement = document.getElementById('hotelPrice');
             hotelPriceElement.textContent = `$${totalPrice} MXN`;
-            hotelPriceElement.style.display = 'inline';
+            hotelPriceElement.style.display = 'inline'; // Mostrar el precio solo si se seleccionó la cantidad
         } else {
             const hotelPriceElement = document.getElementById('hotelPrice');
-            hotelPriceElement.style.display = 'none';
+            hotelPriceElement.style.display = 'none'; // Ocultar el precio si la cantidad no se ha seleccionado
         }
     }
     
+    
+    // Event listener para actualizar el precio del hotel al cambiar la selección de hotel
+    document.querySelectorAll('input[name="hotel"]').forEach(radio => {
+        radio.addEventListener('input', updateHotelPrices);
+    });
+
+
+    
+
+
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();
