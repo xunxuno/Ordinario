@@ -190,15 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // mandar formulario
 // mandar formulario
-// En el evento de click del botón de envío
 document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault(); // Evitar que el formulario se envíe automáticamente
 
-    // Actualizar los precios del vuelo y del hotel antes de enviar el formulario
-    updateFlightPrices();
-    updateHotelPrices();
-
-    // Crear el objeto data con los valores actualizados
     const formData = new FormData(this);
     const data = {
         destino: formData.get('destino'),
@@ -210,7 +204,7 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         hotelPrice: currentHotelPrice
     };
 
-    // Enviar el formulario con los datos actualizados
+    // Enviar la solicitud manualmente después de procesar los datos
     fetch('/viaje', {
         method: 'POST',
         headers: {
@@ -227,9 +221,6 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         console.error('Error:', error);
     });
 });
-
-
-
 
 
     

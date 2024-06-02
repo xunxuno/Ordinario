@@ -189,49 +189,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // mandar formulario
-// mandar formulario
-// En el evento de click del botón de envío
-document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
-
-    // Actualizar los precios del vuelo y del hotel antes de enviar el formulario
-    updateFlightPrices();
-    updateHotelPrices();
-
-    // Crear el objeto data con los valores actualizados
-    const formData = new FormData(this);
-    const data = {
-        destino: formData.get('destino'),
-        fly: formData.get('fly'),
-        cantidad: formData.get('cantidad'),
-        flightPrice: currentFlightPrice,
-        hotel: formData.get('hotel'),
-        noches: formData.get('noches'),
-        hotelPrice: currentHotelPrice
-    };
-
-    // Enviar el formulario con los datos actualizados
-    fetch('/viaje', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Formulario enviado correctamente');
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
+    document.getElementById('multiStepForm').addEventListener('submit', function(event) {
+        const formData = new FormData(this);
+        const data = {
+            destino: formData.get('destino'),
+            fly: formData.get('fly'),
+            cantidad: formData.get('cantidad'),
+            flightPrice: currentFlightPrice,
+            hotel: formData.get('hotel'),
+            noches: formData.get('noches'),
+            hotelPrice: currentHotelPrice
+        };
+    
+        fetch('/viaje', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Formulario enviado correctamente');
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     });
-});
-
-
-
-
-
     
 
     document.getElementById('destino').addEventListener('change', function() {
