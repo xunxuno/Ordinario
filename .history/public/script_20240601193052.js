@@ -7,57 +7,49 @@ const hotelesPorDestino = {
     "bar": [
         { nombre: "Catalonia Park Guell", precio: "$1600 MXN por noche" },
         { nombre: "Barcelona Princess", precio: "$4000 MXN por noche" },
-        { nombre: "Barcelo Sants", precio: "$2500 MXN por noche" },
-        { nombre: "Hotel Market", precio: "$1899 MXN por noche" }
+        { nombre: "Barcelo Sants", precio: "$2500 MXN por noche" }
     ],
     "que": [
-        { nombre: "Holiday Inn Queenstown Remarkables Park", precio: "$2300 MXN por noche" },
-        { nombre: "Heartland Hotel Queenstown", precio: "$2400 MXN por noche" },
-        { nombre: "Hurley's of Queenstown", precio: "$1800 MXN por noche" },
-        { nombre: "Rydges Lakeland Resort Queenstown", precio: "$2200 MXN por noche" }
+        { nombre: "Sherwood", precio: "$64 MXN por noche" },
+        { nombre: "Oaks Queenstown Shores Resort", precio: "$2500 NZD por noche" },
+        { nombre: "Queenstown Hotel 3", precio: "$3000 NZD por noche" }
     ],
     "es": [
-        { nombre: "Motto By Mula Hotel", precio: "$2400 MXN por noche" },
-        { nombre: "The Ritz-Carlton", precio: "$6700 MXN por noche" },
-        { nombre: "İstiklal hostel istanbul", precio: "$300 MXN por noche" },
-        { nombre: "erciyes suites", precio: "$400 MXN por noche" }
+        { nombre: "Estambul Hotel 1", precio: "$1500 TRY por noche" },
+        { nombre: "Estambul Hotel 2", precio: "$2000 TRY por noche" },
+        { nombre: "Estambul Hotel 3", precio: "$2500 TRY por noche" }
     ],
     "pa": [
-        { nombre: "Nouvel Hôtel Eiffel", precio: "$1800 MXN por noche" },
-        { nombre: "Atala powered by Sonder", precio: "$5200 MXN por noche" },
-        { nombre: "Hotel Armoni Paris", precio: "$2090 MXN por noche" },
-        { nombre: "Sonder Le Frochot", precio: "$2300 MXN por noche" }
+        { nombre: "Estambul Hotel 1", precio: "$1500 TRY por noche" },
+        { nombre: "Estambul Hotel 2", precio: "$2000 TRY por noche" },
+        { nombre: "Estambul Hotel 3", precio: "$2500 TRY por noche" }
     ],
     "san": [
-        { nombre: "Yotel San Francisco", precio: "$1900 MXN por noche" },
-        { nombre: "Hilton San Francisco Union Square", precio: "$2100 MXN por noche" },
-        { nombre: "Riu Plaza Fisherman's Wharf", precio: "$4400 MXN por noche" },
-        { nombre: "The St. Regis San Francisco", precio: "$7600 MXN por noche" }
+        { nombre: "Estambul Hotel 1", precio: "$1500 TRY por noche" },
+        { nombre: "Estambul Hotel 2", precio: "$2000 TRY por noche" },
+        { nombre: "Estambul Hotel 3", precio: "$2500 TRY por noche" }
     ],
     "sin": [
-        { nombre: "Hotel 81 Palace", precio: "$860 MXN por noche" },
-        { nombre: "The Serangoon House", precio: "$1700 MXN por noche" },
-        { nombre: "Hotel Mi Bencoolen", precio: "$1690 MXN por noche" },
-        { nombre: "Resorts World Sentosa - Hotel Ora", precio: "$3800 MXN por noche" }
+        { nombre: "Estambul Hotel 1", precio: "$1500 TRY por noche" },
+        { nombre: "Estambul Hotel 2", precio: "$2000 TRY por noche" },
+        { nombre: "Estambul Hotel 3", precio: "$2500 TRY por noche" }
     ],
     "se": [
-        { nombre: "Hotel 8 Hours", precio: "$3200 MXN por noche" },
-        { nombre: "OYO Hostel Myeongdong 5", precio: "$1100 MXN por noche" },
-        { nombre: "LOTTE City Hotel Gimpo Airport", precio: "$1800 MXN por noche" },
-        { nombre: "Four Points by Sheraton Josun", precio: "$1750 MXN por noche" }
+        { nombre: "Estambul Hotel 1", precio: "$1500 TRY por noche" },
+        { nombre: "Estambul Hotel 2", precio: "$2000 TRY por noche" },
+        { nombre: "Estambul Hotel 3", precio: "$2500 TRY por noche" }
     ],
     "kyo": [
-        { nombre: "KABIN Machi", precio: "$2600 MXN por noche" },
-        { nombre: "The OneFive Kyoto Shijo", precio: "$621 MXN por noche" },
-        { nombre: "Comfort Hotel Kyoto Horikawagojo", precio: "$1009 MXN por noche" },
-        { nombre: "HOTEL MYSTAYS Kyoto Shijo", precio: "$957 MXN por noche" }
+        { nombre: "Estambul Hotel 1", precio: "$1500 TRY por noche" },
+        { nombre: "Estambul Hotel 2", precio: "$2000 TRY por noche" },
+        { nombre: "Estambul Hotel 3", precio: "$2500 TRY por noche" }
     ],
     "lon": [
-        { nombre: "YOTEL London ShoreditchS", precio: "$3200 MXN por noche" },
-        { nombre: "Sonder Camden Road", precio: "$3200 MXN por noche" },
-        { nombre: "Central London Luxury Studios", precio: "$1007 MXN por noche" },
-        { nombre: "ME London by Melia - Covent Garden", precio: "$11160 MXN por noche" }
+        { nombre: "Estambul Hotel 1", precio: "$1500 TRY por noche" },
+        { nombre: "Estambul Hotel 2", precio: "$2000 TRY por noche" },
+        { nombre: "Estambul Hotel 3", precio: "$2500 TRY por noche" }
     ],
+    // Agrega más hoteles correspondientes a otros destinos aquí
 };
 
 // Función para mostrar los hoteles correspondientes al destino seleccionado

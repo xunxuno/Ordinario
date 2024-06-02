@@ -56,8 +56,9 @@ const hotelesPorDestino = {
         { nombre: "YOTEL London ShoreditchS", precio: "$3200 MXN por noche" },
         { nombre: "Sonder Camden Road", precio: "$3200 MXN por noche" },
         { nombre: "Central London Luxury Studios", precio: "$1007 MXN por noche" },
-        { nombre: "ME London by Melia - Covent Garden", precio: "$11160 MXN por noche" }
+        { nombre: "Rydges Lakeland Resort Queenstown", precio: "$2200 MXN por noche" }
     ],
+    // Agrega más hoteles correspondientes a otros destinos aquí
 };
 
 // Función para mostrar los hoteles correspondientes al destino seleccionado
