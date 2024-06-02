@@ -186,8 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // mandar formulario
+
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
+        event.preventDefault();
         const formData = new FormData(this);
         const data = {
             destino: formData.get('destino'),

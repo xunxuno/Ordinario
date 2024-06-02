@@ -9,7 +9,7 @@ router.get('/', authMiddleware.verifyToken, (req, res) => {
 });
 
 
-router.post('/', async (req, res) => {
+router.post('/viaje', async (req, res) => {
     const datosFormulario = req.body;
     console.log(datosFormulario);
 
