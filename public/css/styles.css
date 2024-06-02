@@ -12,6 +12,14 @@ h2 {
   color: white;
 }
 
+p {
+  color: white;
+}
+
+span {
+  color: #F7E025;
+}
+
 /* nav  */
 nav {
   display: flex;
