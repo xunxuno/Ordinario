@@ -10,15 +10,15 @@ block content
                     label(for="destino") Destino:
                     br
                     select(id="destino", name="destino", required)  
-                        option(value="bar") Barcelona, España
-                        option(value="que") Queenstown, Nueva Zelanda
-                        option(value="es") Estambul, Turquía
-                        option(value="pa") París, Francia
-                        option(value="san") San Francisco, California
-                        option(value="sin") Singapur, China
-                        option(value="se") Seúl, Corea del Sur
-                        option(value="kyo") Kyoto, Japón 
-                        option(value="lon") Londres, Inglaterra
+                        option(value="es") Barcelona, España
+                        option(value="coc") Queenstown, Nueva Zelanda
+                        option(value="sus") Estambul, Turquía
+                        option(value="b64") París, Francia
+                        option(value="hex") San Francisco, California
+                        option(value="bin") Singapur, China
+                        option(value="es") Seúl, Corea del Sur
+                        option(value="coc") Kyoto, Japón 
+                        option(value="sus") Londres, Inglaterra
                         br
                     button(type="button" onclick="nextSlide()") Reserva tus vuelos!
                 .slide
@@ -45,26 +45,11 @@ block content
                     input(type="date" id="date" name="date" required) 
                     br
                     button(type="button" onclick="prevSlide()") Cambiar Destino
-                    button(type="button" onclick="nextSlide()") Reserva tu Hotel!
+                    button(type="button" onclick="nextSlide()") Siguiente
                 .slide
-                    h2 Hospedaje
-                    p Elije tu Hotel!
-                    div#hotelesContainer
-                    label(for="hotel1") Catalonia Park Guell
-                    p $1600 MXN por noche
-                    input(type="radio" id="hotel1" name="hotel" value="hotel1" required)
-                    br
-                    label(for="hotel2") Barcelona Princess
-                    p $4000 MXN por noche
-                    input(type="radio" id="hotel2" name="hotel" value="hotel2" required)
-                    br
-                    label(for="hotel3") Barcelo Sants
-                    p $2500 MXN por noche
-                    input(type="radio" id="hotel3" name="hotel" value="hotel3" required)
-                    br
-                    label(for="hotel4") hotel4
-                    input(type="radio" id="hotel4" name="hotel" value="hotel4" required)
-                    br
+                    h2 Parte 3
+                    label(for="age") Edad:
+                    input(type="number" id="age" name="age" required)
                     button(type="button" onclick="prevSlide()") Anterior
                     button(type="submit") Enviar
                 script(src="/script.js")

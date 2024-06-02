@@ -1,0 +1,41 @@
+extends layout 
+
+block content
+
+    .mainContainer
+        form#multiStepForm
+            .slides-container
+                .slide.active
+                    h2 Selecciona el destino de tu proxima aventura
+                    label(for="destino") Destino:
+                    br
+                    select(id="destino", name="destino", required)  
+                        option(value="es") Barcelona, España
+                        option(value="coc") Queenstown, Nueva Zelanda
+                        option(value="sus") Estambul, Turquía
+                        option(value="b64") París, Francia
+                        option(value="hex") San Francisco, California
+                        option(value="bin") Singapur, China
+                        option(value="es") Seúl, Corea del Sur
+                        option(value="coc") Kyoto, Japón 
+                        option(value="sus") Londres, Inglaterra
+                        br
+                    button(type="button" onclick="nextSlide()") Reserva tus vuelos!
+                .slide
+                    h2 Vuelos
+                    p Selecciona tu clase de vuelo:
+                    label(for="turista") Clase turista
+                    input(type="radio" id="turista" name="fly" value="turista")
+                    label(for="canada") Canadá
+                    input(type="radio" id="canada" name="fly" value="canada")
+                    label(for="mexico") México
+                    input(type="radio" id="mexico" name="fly" value="mexico")
+                    button(type="button" onclick="prevSlide()") Anterior
+                    button(type="button" onclick="nextSlide()") Siguiente
+                .slide
+                    h2 Parte 3
+                    label(for="age") Edad:
+                    input(type="number" id="age" name="age" required)
+                    button(type="button" onclick="prevSlide()") Anterior
+                    button(type="submit") Enviar
+                script(src="/script.js")

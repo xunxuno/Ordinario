@@ -44,6 +44,22 @@ function mostrarHoteles() {
     const hotelesContainer = document.getElementById('hotelesContainer');
     hotelesContainer.innerHTML = ''; // Limpiar el contenedor de hoteles
 
+    // Definir los hoteles correspondientes a cada destino
+    const hotelesPorDestino = {
+        "bar": [
+            { nombre: "Catalonia Park Guell", precio: "$1600 MXN por noche" },
+            { nombre: "Barcelona Princess", precio: "$4000 MXN por noche" },
+            { nombre: "Barcelo Sants", precio: "$2500 MXN por noche" }
+        ],
+        "que": [
+            // Agrega los hoteles correspondientes a Queenstown aquí
+        ],
+        "es": [
+            // Agrega los hoteles correspondientes a Estambul aquí
+        ],
+        // Agrega más hoteles correspondientes a otros destinos aquí
+    };
+
     // Obtener los hoteles para el destino seleccionado
     const hoteles = hotelesPorDestino[destinoSeleccionado];
 
