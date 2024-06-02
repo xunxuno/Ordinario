@@ -119,46 +119,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para actualizar los precios de los vuelos según la selección
     function updateFlightPrices() {
         const destination = document.getElementById('destino').value;
-        const flightClass = document.querySelector('input[name="fly"]:checked');
-    
-        if (destination && flightClass) {
-            const flightPrice = flightPrices[destination][flightClass.value];
-    
-            // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
-            const flightPriceElement = document.getElementById('flightPrice');
-            flightPriceElement.textContent = `$${flightPrice} MXN`;
-        }
+        const flightClass = document.querySelector('input[name="fly"]:checked').value;
+        const flightPrice = flightPrices[destination][flightClass];
+
+        // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
+        const flightPriceElement = document.getElementById('flightPrice');
+        flightPriceElement.textContent = `$${flightPrice} MXN`;
     }
 
     function updateHotelOptions() {
-        const destination = document.getElementById('destino').value;
-        const hotelsContainer = document.getElementById('hotelesContainer');
-        hotelsContainer.innerHTML = '';
-
-        if (hotelesPorDestino[destination]) {
-            hotelesPorDestino[destination].forEach(hotel => {
-                const label = document.createElement('label');
-                label.setAttribute('for', hotel.nombre);
-                label.innerText = `${hotel.nombre} - $${hotel.price} MXN por noche`;
-
-                const input = document.createElement('input');
-                input.type = 'radio';
-                input.id = hotel.nombre;
-                input.name = 'hotel';
-                input.value = hotel.nombre;
-                input.setAttribute('data-price', hotel.price);
-                input.required = true;
-
-                hotelsContainer.appendChild(label);
-                hotelsContainer.appendChild(input);
-                hotelsContainer.appendChild(document.createElement('br'));
-            });
-        }
+        // Código para actualizar las opciones de hotel...
     }
 
     // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
     updateHotelOptions();
-    updateFlightPrices();
+    updateFlightPrices()
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();

@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Agrega los precios para otros destinos según sea necesario
     };
 
+
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const slidesContainer = document.querySelector('.slides-container');
@@ -116,31 +117,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Función para actualizar los precios de los vuelos según la selección
-    function updateFlightPrices() {
-        const destination = document.getElementById('destino').value;
-        const flightClass = document.querySelector('input[name="fly"]:checked');
-    
-        if (destination && flightClass) {
-            const flightPrice = flightPrices[destination][flightClass.value];
-    
-            // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
-            const flightPriceElement = document.getElementById('flightPrice');
-            flightPriceElement.textContent = `$${flightPrice} MXN`;
-        }
-    }
-
     function updateHotelOptions() {
         const destination = document.getElementById('destino').value;
         const hotelsContainer = document.getElementById('hotelesContainer');
-        hotelsContainer.innerHTML = '';
-
+        hotelsContainer.innerHTML = ''; // Limpiar el contenido previo antes de agregar nuevas opciones
+    
         if (hotelesPorDestino[destination]) {
             hotelesPorDestino[destination].forEach(hotel => {
                 const label = document.createElement('label');
                 label.setAttribute('for', hotel.nombre);
                 label.innerText = `${hotel.nombre} - $${hotel.price} MXN por noche`;
-
+    
                 const input = document.createElement('input');
                 input.type = 'radio';
                 input.id = hotel.nombre;
@@ -148,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.value = hotel.nombre;
                 input.setAttribute('data-price', hotel.price);
                 input.required = true;
-
+    
                 hotelsContainer.appendChild(label);
                 hotelsContainer.appendChild(input);
                 hotelsContainer.appendChild(document.createElement('br'));
@@ -156,9 +143,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
+    function updateFlightPrice(destination, selectedClass) {
+        const priceInput = document.getElementById('flightPrice');
+        if (flightPrices.hasOwnProperty(destination) && flightPrices[destination].hasOwnProperty(selectedClass)) {
+            const price = flightPrices[destination][selectedClass];
+            priceInput.value = price;
+        } else {
+            priceInput.value = ''; // Si el destino o la clase no tienen precio, dejamos el campo vacío
+        }
+    }
+
+    function updateFlightPrices(destination) {
+        const selectedClass = document.querySelector('input[name="fly"]:checked').value;
+        updateFlightPrice(destination, selectedClass);
+    }
+
+    // Llamada inicial para asegurar que las opciones de hotel y vuelos se actualicen al cargar la página
     updateHotelOptions();
-    updateFlightPrices();
+    updateFlightPrices(); 
+    
+
+    document.getElementById('destino').addEventListener('change', function(event) {
+        const selectedDestination = event.target.value;
+        updateFlightPrices(selectedDestination);
+    });
+
+    document.querySelectorAll('input[name="fly"]').forEach(input => {
+        input.addEventListener('change', function() {
+            const selectedDestination = document.getElementById('destino').value;
+            updateFlightPrice(selectedDestination, this.value);
+        });
+    });
+
+
+
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -166,21 +184,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Aquí puedes agregar el código para enviar los datos a tu servidor
     });
 
-    document.getElementById('destino').addEventListener('change', function() {
-        updateHotelOptions();
-        updateFlightPrices(); // Llamar a la función para actualizar los precios de los vuelos al cambiar el destino
-    });
+    document.getElementById('destino').addEventListener('change', updateHotelOptions);
 
-    // Event listener para actualizar los precios de los vuelos al cambiar la clase de vuelo
-    document.querySelectorAll('input[name="fly"]').forEach(radio => {
-        radio.addEventListener('change', updateFlightPrices);
+    document.querySelectorAll('.next-slide').forEach(button => {
+        button.addEventListener('click', nextSlide);
     });
-
-    // Event listeners para los botones de siguiente y anterior
-    document.getElementById('nextSlideButton1').addEventListener('click', nextSlide);
-    document.getElementById('prevSlideButton1').addEventListener('click', prevSlide);
-    document.getElementById('nextSlideButton2').addEventListener('click', nextSlide);
-    document.getElementById('prevSlideButton2').addEventListener('click', prevSlide);
+    document.querySelectorAll('button[onclick="prevSlide()"]').forEach(button => {
+        button.addEventListener('click', prevSlide);
+    });
 
     showSlide(currentSlide);
 });

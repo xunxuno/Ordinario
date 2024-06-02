@@ -119,15 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para actualizar los precios de los vuelos según la selección
     function updateFlightPrices() {
         const destination = document.getElementById('destino').value;
-        const flightClass = document.querySelector('input[name="fly"]:checked');
-    
-        if (destination && flightClass) {
-            const flightPrice = flightPrices[destination][flightClass.value];
-    
-            // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
-            const flightPriceElement = document.getElementById('flightPrice');
-            flightPriceElement.textContent = `$${flightPrice} MXN`;
-        }
+        const flightClass = document.querySelector('input[name="fly"]:checked').value;
+        const flightPrice = flightPrices[destination][flightClass];
+
+        // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
+        const flightPriceElement = document.getElementById('flightPrice');
+        flightPriceElement.textContent = `$${flightPrice} MXN`;
     }
 
     function updateHotelOptions() {
@@ -172,9 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Event listener para actualizar los precios de los vuelos al cambiar la clase de vuelo
-    document.querySelectorAll('input[name="fly"]').forEach(radio => {
-        radio.addEventListener('change', updateFlightPrices);
-    });
+  // Event listener para actualizar los precios de los vuelos al cambiar la clase de vuelo
+  document.querySelectorAll('input[name="fly"]').forEach(radio => {
+    radio.addEventListener('change', updateFlightPrices);
+});
 
     // Event listeners para los botones de siguiente y anterior
     document.getElementById('nextSlideButton1').addEventListener('click', nextSlide);

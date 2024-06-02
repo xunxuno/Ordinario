@@ -119,15 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para actualizar los precios de los vuelos según la selección
     function updateFlightPrices() {
         const destination = document.getElementById('destino').value;
-        const flightClass = document.querySelector('input[name="fly"]:checked');
-    
-        if (destination && flightClass) {
-            const flightPrice = flightPrices[destination][flightClass.value];
-    
-            // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
-            const flightPriceElement = document.getElementById('flightPrice');
-            flightPriceElement.textContent = `$${flightPrice} MXN`;
-        }
+        const flightClass = document.querySelector('input[name="fly"]:checked').value;
+        const flightPrice = flightPrices[destination][flightClass];
+
+        // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
+        const flightPriceElement = document.getElementById('flightPrice');
+        flightPriceElement.textContent = `$${flightPrice} MXN`;
     }
 
     function updateHotelOptions() {
@@ -158,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
     updateHotelOptions();
-    updateFlightPrices();
+    //updateFlightPrices();
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();

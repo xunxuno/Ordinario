@@ -1,11 +1,9 @@
-extends layout 
-
-block content
+.block content
     .mainContainer
         form#multiStepForm(action="/detalles_viaje", method="POST")
             .slides-container
                 .slide.active
-                    h2 Selecciona el destino de tu proxima aventura
+                    h2 Selecciona el destino de tu próxima aventura
                     label(for="destino") Destino:
                     br
                     select(id="destino", name="destino", required)  
@@ -23,20 +21,10 @@ block content
                 .slide
                     h2 Vuelos
                     p Selecciona tu clase de vuelo:
-                    label(for="turista") Clase turista
-                    input(type="radio" id="turista" name="fly" value="turista" required)
-                    label(for="turista") Precio
-                    span#flightPrice
-                    br
-                    label(for="turistaSuperior") Clase turista superior
-                    input(type="radio" id="turistaSuperior" name="fly" value="turistaSuperior" required)
-                    br
-                    label(for="business") Clase business
-                    input(type="radio" id="business" name="fly" value="business" required)
-                    br
-                    label(for="primeraClase") Primera clase
-                    input(type="radio" id="primeraClase" name="fly" value="primeraClase" required)
-                    br
+                    each price, index in flightPrices[destination]
+                        label(for=index) #{price.charAt(0).toUpperCase() + price.slice(1)} - $#{price} MXN
+                        input(type="radio" id=index name="fly" value=index required)
+                        br
                     br
                     label(for="cantidad") Numero de boletos: 
                     input(type="number" id ="cantidad" name="cantidad" required)

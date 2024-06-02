@@ -116,20 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Función para actualizar los precios de los vuelos según la selección
-    function updateFlightPrices() {
-        const destination = document.getElementById('destino').value;
-        const flightClass = document.querySelector('input[name="fly"]:checked');
-    
-        if (destination && flightClass) {
-            const flightPrice = flightPrices[destination][flightClass.value];
-    
-            // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
-            const flightPriceElement = document.getElementById('flightPrice');
-            flightPriceElement.textContent = `$${flightPrice} MXN`;
-        }
-    }
-
     function updateHotelOptions() {
         const destination = document.getElementById('destino').value;
         const hotelsContainer = document.getElementById('hotelesContainer');
@@ -158,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
     updateHotelOptions();
-    updateFlightPrices();
 
     document.getElementById('multiStepForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -166,17 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Aquí puedes agregar el código para enviar los datos a tu servidor
     });
 
-    document.getElementById('destino').addEventListener('change', function() {
-        updateHotelOptions();
-        updateFlightPrices(); // Llamar a la función para actualizar los precios de los vuelos al cambiar el destino
-    });
+    document.getElementById('destino').addEventListener('change', updateHotelOptions);
 
-    // Event listener para actualizar los precios de los vuelos al cambiar la clase de vuelo
-    document.querySelectorAll('input[name="fly"]').forEach(radio => {
-        radio.addEventListener('change', updateFlightPrices);
-    });
-
-    // Event listeners para los botones de siguiente y anterior
     document.getElementById('nextSlideButton1').addEventListener('click', nextSlide);
     document.getElementById('prevSlideButton1').addEventListener('click', prevSlide);
     document.getElementById('nextSlideButton2').addEventListener('click', nextSlide);

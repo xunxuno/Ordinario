@@ -19,14 +19,12 @@ block content
                         option(value="kyo") Kyoto, Japón 
                         option(value="lon") Londres, Inglaterra
                         br
-                    button(type="button" id="nextSlideButton1" class="next-slide") Reserva tus vuelos!
+                    button(type="button" id="nextSlideButton" class="next-slide") Reserva tus vuelos!
                 .slide
                     h2 Vuelos
                     p Selecciona tu clase de vuelo:
                     label(for="turista") Clase turista
                     input(type="radio" id="turista" name="fly" value="turista" required)
-                    label(for="turista") Precio
-                    span#flightPrice
                     br
                     label(for="turistaSuperior") Clase turista superior
                     input(type="radio" id="turistaSuperior" name="fly" value="turistaSuperior" required)
@@ -45,14 +43,14 @@ block content
                     label(for="fecha") Fecha del vuelo: 
                     input(type="date" id="date" name="date" required) 
                     br
-                    button(type="button" id="prevSlideButton1" onclick="prevSlide()") Cambiar Destino
-                    button(type="button" id="nextSlideButton2" class="next-slide") Reserva tu Hotel!
+                    button(type="button" onclick="prevSlide()") Cambiar Destino
+                    button(type="button" class="next-slide") Reserva tu Hotel!
                 .slide
                     h2 Hospedaje
                     p Elije tu Hotel!
                     div#hotelesContainer
                     label(for="noches") Noches de Hospedaje 
                     input(type="number" id="noches" name="noches" required)
-                    button(type="button" id="prevSlideButton2" onclick="prevSlide()") Anterior
+                    button(type="button" onclick="prevSlide()") Anterior
                     button(type="submit") Enviar
                 script(src="/script.js")

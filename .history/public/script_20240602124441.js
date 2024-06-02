@@ -119,16 +119,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para actualizar los precios de los vuelos según la selección
     function updateFlightPrices() {
         const destination = document.getElementById('destino').value;
-        const flightClass = document.querySelector('input[name="fly"]:checked');
+        const flightsContainer = document.getElementById('vuelosContainer');
+        flightsContainer.innerHTML = '';
     
-        if (destination && flightClass) {
-            const flightPrice = flightPrices[destination][flightClass.value];
+        if (flightPrices[destination]) {
+            Object.keys(flightPrices[destination]).forEach(flightClass => {
+                const label = document.createElement('label');
+                label.setAttribute('for', flightClass);
+                label.innerText = `${flightClass.charAt(0).toUpperCase() + flightClass.slice(1)} - $${flightPrices[destination][flightClass]} MXN`;
     
-            // Mostrar el precio del vuelo en algún elemento HTML, por ejemplo:
-            const flightPriceElement = document.getElementById('flightPrice');
-            flightPriceElement.textContent = `$${flightPrice} MXN`;
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.id = flightClass;
+                input.name = 'fly';
+                input.value = flightClass;
+                input.required = true;
+    
+                flightsContainer.appendChild(label);
+                flightsContainer.appendChild(input);
+                flightsContainer.appendChild(document.createElement('br'));
+            });
         }
     }
+    
 
     function updateHotelOptions() {
         const destination = document.getElementById('destino').value;
