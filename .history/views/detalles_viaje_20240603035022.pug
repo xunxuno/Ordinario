@@ -1,0 +1,24 @@
+extends layout 
+
+block content
+
+    .mainContainer
+        if historialVuelo && historialVuelo.length > 0
+            table
+            thead
+                tr
+                th Destino
+                th Vuelo
+                th Fecha
+                // Agregar más encabezados según las propiedades del vuelo que desees mostrar
+
+            tbody
+                // Iterar sobre cada vuelo en el historial
+                each vuelo in historialVuelo
+                tr
+                    td= vuelo.destino // Mostrar el destino del vuelo
+                    td= vuelo.vuelo // Mostrar el número de vuelo
+                    td= vuelo.fecha // Mostrar la fecha del vuelo
+                    // Agregar más columnas según las propiedades del vuelo que desees mostrar
+            else
+                p No hay vuelos en el historial

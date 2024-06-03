@@ -8,6 +8,10 @@ body {
   background-color: #1E171F;
 }
 
+h1 {
+  color: white;
+}
+
 h2 {
   color: white;
 }
@@ -141,6 +145,26 @@ button {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+/* otros */
+.center-text {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.historial-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.center-text {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,34 @@
+extends layout
+
+block content
+
+  
+  h1 Historial de Vuelos
+
+
+    if historialVuelo && historialVuelo.length > 0
+      table
+        thead
+          tr
+            th Destino
+            th Vuelo
+            th Cantidad de Boletos
+            th Precio del Vuelo
+            th Fecha del Vuelo
+            th Hotel
+            th Noches de Hospedaje
+            th Precio del Hotel
+        tbody
+
+          each vuelo in historialVuelo
+            tr
+              td= vuelo.destino
+              td= vuelo.vuelo
+              td= vuelo.cantidad_boletos
+              td= vuelo.precio_vuelo
+              td= vuelo.fecha_vuelo
+              td= vuelo.hotel
+              td= vuelo.noches_hospedaje
+              td= vuelo.precio_hotel
+    else
+      p No hay vuelos en el historial

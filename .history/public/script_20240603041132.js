@@ -61,13 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // vuelos
     const flightPrices = {
-        "Barcelona": {
+        "bar": {
             "turista": 500,
             "turistaSuperior": 700,
             "business": 1000,
             "primeraClase": 1500
         },
-        "Queenstown": {
+        "que": {
             "turista": 800,
             "turistaSuperior": 1000,
             "business": 1500,

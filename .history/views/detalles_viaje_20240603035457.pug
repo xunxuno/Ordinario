@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  
+  h1 Historial de Vuelos
+  if historialVuelo && historialVuelo.length > 0
+    table
+      thead
+        tr
+          th Destino
+          th Vuelo
+          th Fecha
+      tbody
+        each vuelo in historialVuelo
+          tr
+            td= vuelo.destino 
+            td= vuelo.vuelo
+            td= vuelo.fecha 
+  else
+    p No hay vuelos en el historial
