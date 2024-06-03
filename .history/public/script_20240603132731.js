@@ -69,51 +69,51 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "Queenstown": {
             "turista": 20000,
-            "turista Superior": 31000,
+            "turistaSuperior": 31000,
             "business": 56000,
-            "primera Clase": 130000
+            "primeraClase": 130000
         },
         "Estambul": {
             "turista": 12000,
-            "turista Superior": 25000,
+            "turistaSuperior": 25000,
             "business": 39000,
-            "primera Clase": 84000
+            "primeraClase": 84000
         },
         "París": {
             "turista": 29000,
-            "turista Superior": 44000,
+            "turistaSuperior": 44000,
             "business": 78000,
-            "primera Clase": 106000
+            "primeraClase": 106000
         },
         "San Francisco": {
             "turista": 6200,
-            "turista Superior": 7400,
+            "turistaSuperior": 7400,
             "business": 15000,
-            "primera Clase": 21000
+            "primeraClase": 21000
         },
         "Singapur": {
             "turista": 44000,
-            "turista Superior": 61000,
+            "turistaSuperior": 61000,
             "business": 90000,
-            "primera Clase": 148000
+            "primeraClase": 148000
         },
         "Seúl": {
             "turista": 41000,
-            "turista Superior": 59000,
+            "turistaSuperior": 59000,
             "business": 80000,
-            "primera Clase": 115000
+            "primeraClase": 115000
         },
         "Kyoto": {
             "turista": 55000,
-            "turista Superior": 60000,
+            "turistaSuperior": 60000,
             "business": 96000,
-            "primera Clase": 135000
+            "primeraClase": 135000
         },
         "Londres": {
             "turista": 18000,
-            "turista Superior": 32000,
+            "turistaSuperior": 32000,
             "business": 55000,
-            "primera Clase": 104000
+            "primeraClase": 104000
         }
     };
 
