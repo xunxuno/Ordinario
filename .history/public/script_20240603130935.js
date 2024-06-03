@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "primeraClase": 119305
         },
         "Queenstown": {
-            "turista": 20000,
-            "turistaSuperior": 31000,
-            "business": 56000,
-            "primeraClase": 130000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         },
         "Estambul": {
             "turista": 12000,
@@ -80,40 +80,40 @@ document.addEventListener('DOMContentLoaded', () => {
             "primeraClase": 84000
         },
         "París": {
-            "turista": 29000,
-            "turistaSuperior": 44000,
-            "business": 78000,
-            "primeraClase": 106000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         },
         "San Francisco": {
-            "turista": 6200,
-            "turistaSuperior": 7400,
-            "business": 15000,
-            "primeraClase": 21000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         },
         "Singapur": {
-            "turista": 44000,
-            "turistaSuperior": 61000,
-            "business": 90000,
-            "primeraClase": 148000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         },
         "Seúl": {
-            "turista": 41000,
-            "turistaSuperior": 59000,
-            "business": 80000,
-            "primeraClase": 115000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         },
         "Kyoto": {
-            "turista": 55000,
-            "turistaSuperior": 60000,
-            "business": 96000,
-            "primeraClase": 135000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         },
         "Londres": {
-            "turista": 18000,
-            "turistaSuperior": 32000,
-            "business": 55000,
-            "primeraClase": 104000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         }
     };
 

@@ -104,16 +104,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "primeraClase": 115000
         },
         "Kyoto": {
-            "turista": 55000,
-            "turistaSuperior": 60000,
-            "business": 96000,
-            "primeraClase": 135000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         },
         "Londres": {
-            "turista": 18000,
-            "turistaSuperior": 32000,
-            "business": 55000,
-            "primeraClase": 104000
+            "turista": 800,
+            "turistaSuperior": 1000,
+            "business": 1500,
+            "primeraClase": 2000
         }
     };
 
