@@ -16,9 +16,11 @@ class Viaje {
 }
 
 async function registrarViaje(userId, destino, fly, cantidad, flightPrice, date, hotel, noches, hotelPrice){
+    const token = req.cookies.token;
     try {
         const response = await axios.post('http://localhost:3002/api/registrarVuelo', {
             dataViaje: {
+                token,
                 userId,
                 destino,
                 fly,
