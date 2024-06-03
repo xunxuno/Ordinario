@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/authMiddleware'); 
-const viajeController = require('../controllers/viajeController');
 
-router.get('/', authMiddleware.verifyToken, async (req, res) => {
+router.get('/', authMiddleware.verifyToken, (req, res) => {
     //res.status(200).send('Datos protegidos: acceso concedido');
     console.log('Acceso concedido');
-    const userId = req.cookies.userId;
-    const historialVuelo = await viajeController.historial(userId);
-    res.render('detalles_viaje', {historialVuelo});
+    res.render('detalles_viaje');
 });
 
 router.post('/', async (req, res) => {

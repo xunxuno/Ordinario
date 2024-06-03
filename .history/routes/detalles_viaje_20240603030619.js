@@ -8,7 +8,7 @@ router.get('/', authMiddleware.verifyToken, async (req, res) => {
     console.log('Acceso concedido');
     const userId = req.cookies.userId;
     const historialVuelo = await viajeController.historial(userId);
-    res.render('detalles_viaje', {historialVuelo});
+    res.render('detalles_viaje');
 });
 
 router.post('/', async (req, res) => {

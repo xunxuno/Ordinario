@@ -39,8 +39,8 @@ async function registrarViaje(userId, destino, fly, cantidad, flightPrice, date,
 async function historialVuelos(userId){
     try {
         const response = await axios.get(`http://localhost:3002/api/historial/${userId}`);
-        console.log('Respuesta de la API:', response.data);
         return response.data;
+        console.log(response.data);
     } catch (error) {
         console.error('Error al obtener el historial', error);
         throw error;
