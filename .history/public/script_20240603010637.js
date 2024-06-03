@@ -161,7 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.required = true;
 
                 hotelsContainer.appendChild(label);
-                hotelsContainer.appendChild(input);
+                hotelsContainer
+                .appendChild(input);
                 hotelsContainer.appendChild(document.createElement('br'));
             });
 
@@ -171,75 +172,76 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
     // Función para actualizar los precios del hotel según la selección
     function updateHotelPrices() {
-    const selectedHotel = document.querySelector('input[name="hotel"]:checked');
-    const noches = parseInt(document.getElementById('noches').value);
+        const selectedHotel = document.querySelector('input[name="hotel"]:checked');
+        const noches = parseInt(document.getElementById('noches').value);
 
-    if (selectedHotel && noches >= 1) {
-        const hotelPrice = parseInt(selectedHotel.getAttribute('data-price'));
-        const totalPrice = hotelPrice * noches;
-        currentHotelPrice = totalPrice;
+        if (selectedHotel && noches >= 1) {
+            const hotelPrice = parseInt(selectedHotel.getAttribute('data-price'));
+            const totalPrice = hotelPrice * noches;
+            currentHotelPrice = totalPrice;
 
-        const hotelPriceElement = document.getElementById('hotelPrice');
-        hotelPriceElement.textContent = `$${totalPrice} MXN`;
-        hotelPriceElement.style.display = 'inline';
-    } else {
-        currentHotelPrice = 0; // Establece el precio del hotel en 0 si no se ha seleccionado ningún hotel o no se ha especificado la cantidad de noches
-        const hotelPriceElement = document.getElementById('hotelPrice');
-        hotelPriceElement.style.display = 'none';
+            const hotelPriceElement = document.getElementById('hotelPrice');
+            hotelPriceElement.textContent = `$${totalPrice} MXN`;
+            hotelPriceElement.style.display = 'inline';
+        } else {
+            currentHotelPrice = 0; // Establece el precio del hotel en 0 si no se ha seleccionado ningún hotel o no se ha especificado la cantidad de noches
+            const hotelPriceElement = document.getElementById('hotelPrice');
+            hotelPriceElement.style.display = 'none';
+        }
     }
-}
-
     
     // mandar formulario
-// mandar formulario
-// En el evento de click del botón de envío
+    let formSubmitted = false; // Variable para rastrear si el formulario ya se ha enviado
+
 document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    if (!formSubmitted) { // Verificar si el formulario ya se ha enviado
+        //event.preventDefault(); // Evitar el envío del formulario por defecto
 
-    // Actualizar los precios del vuelo y del hotel antes de enviar el formulario
-    updateFlightPrices();
-    updateHotelPrices();
+        // Actualizar los precios del vuelo y del hotel antes de enviar el formulario
+        updateFlightPrices();
+        updateHotelPrices();
 
-    // Crear el objeto data con los valores actualizados
-    const formData = new FormData(this);
-    const data = {
-        destino: formData.get('destino'),
-        fly: formData.get('fly'),
-        cantidad: formData.get('cantidad'),
-        flightPrice: currentFlightPrice,
-        date: formData.get('date'),
-        hotel: formData.get('hotel'),
-        noches: formData.get('noches'),
-        hotelPrice: currentHotelPrice
-    };
+        // Crear el objeto data con los valores actualizados
+        const formData = new FormData(this);
+        const data = {
+            destino: formData.get('destino'),
+            fly: formData.get('fly'),
+            cantidad: formData.get('cantidad'),
+            flightPrice: currentFlightPrice,
+            date: formData.get('date'),
+            hotel: formData.get('hotel'),
+            noches: formData.get('noches'),
+            hotelPrice: currentHotelPrice
+        };
 
-    // Enviar el formulario con los datos actualizados
-    fetch('/viaje', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        if (response.ok) {
-            // Si la respuesta es exitosa, redirige a la ruta deseada
-            window.location.href = '/';
-        } else {
-            // Si la respuesta no es exitosa, maneja el error
-            throw new Error('Error en la solicitud POST');
-        }
-    })  
-    
-    
-    
+        // Enviar el formulario con los datos actualizados
+        fetch('/viaje', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Si la respuesta es exitosa, redirige a la ruta deseada
+                window.location.href = '/';
+            } else {
+                // Si la respuesta no es exitosa, maneja el error
+                throw new Error('Error en la solicitud POST');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Manejar el error, mostrar un mensaje al usuario, etc.
+        });
+
+        formSubmitted = true; // Marcar el formulario como enviado
+    }
 });
-
-
-
-
 
     
 
@@ -268,8 +270,8 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         }
         updateHotelPrices(); // Llama a la función para actualizar el precio del hotel
     });
-    
-    
+
+
     // Llamada inicial para asegurar que las opciones de hotel se actualicen al cargar la página
     updateHotelOptions();
     updateFlightPrices();

@@ -224,17 +224,36 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         body: JSON.stringify(data)
     })
     .then(response => {
-        if (response.ok) {
-            // Si la respuesta es exitosa, redirige a la ruta deseada
-            window.location.href = '/';
-        } else {
-            // Si la respuesta no es exitosa, maneja el error
-            throw new Error('Error en la solicitud POST');
+        if (!response.ok) {
+            throw new Error('Error al enviar el formulario');
         }
-    })  
+        return response.json();
+    })
+    .then(data => {
+        // Aquí puedes procesar la respuesta del servidor después del POST
+        console.log('Respuesta del servidor después del POST:', data);
     
-    
-    
+        // Después del POST, realizar un GET a la ruta '/viaje'
+        return fetch('/viaje', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al obtener datos del servidor');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Aquí puedes procesar la respuesta del servidor después del GET
+        console.log('Respuesta del servidor después del GET:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    }); 
 });
 
 

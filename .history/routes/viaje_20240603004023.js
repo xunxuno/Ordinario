@@ -20,11 +20,9 @@ router.post('/', async (req, res) => {
         // Supongamos que deseas enviar estos datos a una API externa
         await viajeController.registrarViaje(userId, destino, fly, cantidad, flightPrice, date, hotel, noches, hotelPrice);
         console.log('viaje registrado con exito');
-        window.location.href = '/'; //error a proposito para salir de formulario
-        res.redirect('/');
+        res.redirect('/index');
     } catch (error) {
-        //console.error('Error al procesar el formulario:', error);
-        // Quite este error porque mi script no funciona correctamente y necesito que falle algo en la ruta para salir del formulario :)
+        console.error('Error al procesar el formulario:', error);
         res.redirect('/');
         //res.status(500).json({ message: 'Error al procesar el formulario', error: error.message });
     }

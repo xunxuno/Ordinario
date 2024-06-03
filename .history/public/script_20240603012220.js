@@ -231,10 +231,7 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
             // Si la respuesta no es exitosa, maneja el error
             throw new Error('Error en la solicitud POST');
         }
-    })  
-    
-    
-    
+    })    
 });
 
 

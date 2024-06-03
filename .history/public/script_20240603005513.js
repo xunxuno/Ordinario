@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // mandar formulario
 // En el evento de click del botón de envío
 document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    //event.preventDefault(); // Evitar el envío del formulario por defecto
 
     // Actualizar los precios del vuelo y del hotel antes de enviar el formulario
     updateFlightPrices();
@@ -231,10 +231,7 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
             // Si la respuesta no es exitosa, maneja el error
             throw new Error('Error en la solicitud POST');
         }
-    })  
-    
-    
-    
+    })    
 });
 
 

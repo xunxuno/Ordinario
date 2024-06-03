@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let currentFlightPrice = 0;
-    let currentHotelPrice = 0;
     const hotelesPorDestino = {
         "bar": [
             { nombre: "Catalonia Park Guell", price: 1600  },
@@ -223,18 +221,14 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (response.ok) {
-            // Si la respuesta es exitosa, redirige a la ruta deseada
-            window.location.href = '/';
-        } else {
-            // Si la respuesta no es exitosa, maneja el error
-            throw new Error('Error en la solicitud POST');
-        }
-    })  
-    
-    
-    
+    .then(response => response.json())
+    .then(data => {
+        alert('Formulario enviado correctamente');
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 });
 
 

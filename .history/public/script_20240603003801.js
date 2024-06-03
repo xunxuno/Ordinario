@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let currentFlightPrice = 0;
-    let currentHotelPrice = 0;
     const hotelesPorDestino = {
         "bar": [
             { nombre: "Catalonia Park Guell", price: 1600  },
@@ -196,11 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // mandar formulario
 // En el evento de click del botón de envío
 document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    //event.preventDefault(); // Evitar el envío del formulario por defecto
 
     // Actualizar los precios del vuelo y del hotel antes de enviar el formulario
-    updateFlightPrices();
-    updateHotelPrices();
+    //updateFlightPrices();
+    //updateHotelPrices();
 
     // Crear el objeto data con los valores actualizados
     const formData = new FormData(this);
@@ -223,18 +221,14 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (response.ok) {
-            // Si la respuesta es exitosa, redirige a la ruta deseada
-            window.location.href = '/';
-        } else {
-            // Si la respuesta no es exitosa, maneja el error
-            throw new Error('Error en la solicitud POST');
-        }
-    })  
-    
-    
-    
+    .then(response => response.json())
+    .then(data => {
+        alert('Formulario enviado correctamente');
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 });
 
 

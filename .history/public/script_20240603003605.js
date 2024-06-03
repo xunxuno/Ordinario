@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let currentFlightPrice = 0;
-    let currentHotelPrice = 0;
     const hotelesPorDestino = {
         "bar": [
             { nombre: "Catalonia Park Guell", price: 1600  },
@@ -173,30 +171,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Función para actualizar los precios del hotel según la selección
     function updateHotelPrices() {
-    const selectedHotel = document.querySelector('input[name="hotel"]:checked');
-    const noches = parseInt(document.getElementById('noches').value);
-
-    if (selectedHotel && noches >= 1) {
-        const hotelPrice = parseInt(selectedHotel.getAttribute('data-price'));
-        const totalPrice = hotelPrice * noches;
-        currentHotelPrice = totalPrice;
-
-        const hotelPriceElement = document.getElementById('hotelPrice');
-        hotelPriceElement.textContent = `$${totalPrice} MXN`;
-        hotelPriceElement.style.display = 'inline';
-    } else {
-        currentHotelPrice = 0; // Establece el precio del hotel en 0 si no se ha seleccionado ningún hotel o no se ha especificado la cantidad de noches
-        const hotelPriceElement = document.getElementById('hotelPrice');
-        hotelPriceElement.style.display = 'none';
+        const selectedHotel = document.querySelector('input[name="hotel"]:checked');
+        const noches = parseInt(document.getElementById('noches').value);
+    
+        if (selectedHotel && noches >= 1) {
+            const hotelPrice = parseInt(selectedHotel.getAttribute('data-price'));
+            const totalPrice = hotelPrice * noches;
+            currentHotelPrice = totalPrice;
+    
+            const hotelPriceElement = document.getElementById('hotelPrice');
+            hotelPriceElement.textContent = `$${totalPrice} MXN`;
+            hotelPriceElement.style.display = 'inline';
+        } else {
+            currentHotelPrice = 0; // Establece el precio del hotel en 0 si no se ha seleccionado ningún hotel o no se ha especificado la cantidad de noches
+            const hotelPriceElement = document.getElementById('hotelPrice');
+            hotelPriceElement.style.display = 'none';
+        }
     }
-}
-
+    
     
     // mandar formulario
 // mandar formulario
 // En el evento de click del botón de envío
 document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    //event.preventDefault(); // Evitar el envío del formulario por defecto
 
     // Actualizar los precios del vuelo y del hotel antes de enviar el formulario
     updateFlightPrices();
@@ -223,18 +221,14 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (response.ok) {
-            // Si la respuesta es exitosa, redirige a la ruta deseada
-            window.location.href = '/';
-        } else {
-            // Si la respuesta no es exitosa, maneja el error
-            throw new Error('Error en la solicitud POST');
-        }
-    })  
-    
-    
-    
+    .then(response => response.json())
+    .then(data => {
+        alert('Formulario enviado correctamente');
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 });
 
 

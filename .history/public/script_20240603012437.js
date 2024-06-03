@@ -216,7 +216,7 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
     };
 
     // Enviar el formulario con los datos actualizados
-    fetch('/viaje', {
+    /*fetch('/viaje', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -231,10 +231,56 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
             // Si la respuesta no es exitosa, maneja el error
             throw new Error('Error en la solicitud POST');
         }
-    })  
+    })  */
     
     
-    
+        // Definir los datos a enviar en la solicitud POST
+    const postData = {
+        data
+    };
+
+    // Definir las opciones para la solicitud POST
+    const postOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    };
+
+    // Definir las opciones para la solicitud GET
+    const getOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    // Hacer ambas solicitudes al mismo tiempo
+    Promise.all([
+        fetch('/viaje', postOptions), // Solicitud POST
+        fetch('/', getOptions)   // Solicitud GET
+    ])
+    .then(responses => {
+        // Procesar las respuestas de ambas solicitudes
+        return Promise.all(responses.map(response => {
+            return response.json(); // Convertir la respuesta a JSON
+        }));
+    })
+    .then(data => {
+        // Aquí puedes acceder a los datos de ambas respuestas
+        const postDataResponse = data[0];
+        const getDataResponse = data[1];
+
+        // Procesar los datos como desees
+        console.log('Respuesta del POST:', postDataResponse);
+        console.log('Respuesta del GET:', getDataResponse);
+    })
+    .catch(error => {
+        // Manejar errores si alguna de las solicitudes falla
+        console.error('Error:', error);
+    });
+
 });
 
 

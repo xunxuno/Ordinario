@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let currentFlightPrice = 0;
-    let currentHotelPrice = 0;
     const hotelesPorDestino = {
         "bar": [
             { nombre: "Catalonia Park Guell", price: 1600  },
@@ -231,10 +229,7 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
             // Si la respuesta no es exitosa, maneja el error
             throw new Error('Error en la solicitud POST');
         }
-    })  
-    
-    
-    
+    })    
 });
 
 
