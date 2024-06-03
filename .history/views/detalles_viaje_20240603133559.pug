@@ -3,8 +3,9 @@ extends layout
 block content
     .mainContainer
         .center-text
-            h1 Mis Viajes
+            h1 Historial de Viajes
             each vuelo in historialVuelo
+            form(action="/", method="GET")
                 .historial-item
                     p Destino: #{vuelo.destino}
                     p Vuelo: #{vuelo.vuelo}
@@ -13,8 +14,6 @@ block content
                     p Fecha del Vuelo: #{new Date(vuelo.fecha_vuelo).toLocaleDateString()}
                     p Hotel: #{vuelo.hotel}
                     p Noches de Hospedaje: #{vuelo.noches_hospedaje}
-                    p Precio del Hospedaje: $#{vuelo.precio_hotel} MXN
-                    .btnGestion
-                        form(action="/", method="GET")
-                            button(type="submit") Gestionar Viaje
+                    p Precio del Hotel: $#{vuelo.precio_hotel} MXN
+                        button(type="submit") Gestionar Viaje
 
