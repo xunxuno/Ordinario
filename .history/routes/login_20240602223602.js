@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
     console.log('Token almacenado en cookie:', token);
     console.log('UserId almacenado en cookie:', userId);
     console.log('Logeado correctamente');
-    res.redirect('/');
+    res.redirect('/${userId}');
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Error interno del servidor');

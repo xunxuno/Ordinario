@@ -11,7 +11,7 @@ router.get('/', authMiddleware.verifyToken, (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const datosFormulario = req.body;
+    const {datosFormulario} = req.body;
     const { destino, fly, cantidad, flightPrice, date, hotel, noches, hotelPrice } = req.body;
     const userId = req.cookies.userId;
     console.log(datosFormulario);

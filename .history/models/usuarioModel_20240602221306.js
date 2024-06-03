@@ -30,17 +30,18 @@ async function logearUsuario(nombre, password) {
     try {
         const response = await axios.post(`http://localhost:3002/api/login`, {
             dataSegura: {
-                nombre: nombre,
-                password: password
+                "nombre": nombre,
+                "password": password
             }
         });
-
-        const { token, userId } = response.data; // Asegúrate de que la API devuelve `userId`
+        const { token, userId } = response.data;
         console.log('Token recibido:', token);
-        console.log('UserId recibido:', userId); // Depura la respuesta del servidor
-        console.log('Respuesta del servidor:', response.data);
+        console.log('UserId recibido:', userId);
+        console.log('Respuesta del servidor:', response.data); // Depura la respuesta del servidor
+        
 
-        return { token, userId };
+        const usuario = response.data;
+        return { token, userId, usuario: new Usuario(usuario.id, usuario.nombre, usuario.email, usuario.password_hash) };
     } catch (error) {
         console.error('Error al obtener usuario por nombre:', error);
         throw error;

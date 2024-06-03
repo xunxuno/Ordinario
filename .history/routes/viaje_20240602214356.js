@@ -12,15 +12,13 @@ router.get('/', authMiddleware.verifyToken, (req, res) => {
 
 router.post('/', async (req, res) => {
     const datosFormulario = req.body;
-    const { destino, fly, cantidad, flightPrice, date, hotel, noches, hotelPrice } = req.body;
-    const userId = req.cookies.userId;
     console.log(datosFormulario);
 
     try {
         // Supongamos que deseas enviar estos datos a una API externa
-        await viajeController.registrarViaje(userId, destino, fly, cantidad, flightPrice, date, hotel, noches, hotelPrice);
-        console.log('viaje registrado con exito');
-        res.redirect('/');
+        
+        const response = await axios.post('https://api.externa.com/endpoint', datosFormulario);
+        res.json({ message: 'Formulario recibido y procesado', data: response.data });
     } catch (error) {
         console.error('Error al procesar el formulario:', error);
         res.redirect('/');

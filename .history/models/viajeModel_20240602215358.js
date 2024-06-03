@@ -1,13 +1,12 @@
 const axios = require('axios');
 
 class Viaje {
-    constructor(userId, destino, fly, cantidad, flightPrice, date, hotel, noches, hotelPrice){
-        this.userId = userId;
+    constructor(idUsuario, destino, fly, cantidad, flightPrice, hotel, noches, hotelPrice){
+        this.idUsuario = idUsuario;
         this.destino = destino;
         this.fly = fly;
         this.cantidad = cantidad;
         this.flightPrice = flightPrice;
-        this.date = date;
         this.data = date;
         this.hotel = hotel;
         this.noches = noches;
@@ -15,11 +14,11 @@ class Viaje {
     }
 }
 
-async function registrarViaje(userId, destino, fly, cantidad, flightPrice, date, hotel, noches, hotelPrice){
+async function registrarViaje(idUsuario, destino, fly, cantidad, flightPrice, hotel, noches, hotelPrice){
     try {
         const response = await axios.post('http://localhost:3002/api/registrar', {
             dataViaje: {
-                userId,
+                idUsuario,
                 destino,
                 fly,
                 cantidad,

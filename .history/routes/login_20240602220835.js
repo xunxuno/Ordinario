@@ -12,17 +12,15 @@ router.get('/',authMiddleware.redirectIfAuthenticated, (req, res) => {
 // ruta POST
 router.post('/', async (req, res) => {
   const { nombre, password } = req.body;
-  console.log('Datos recibidos en la solicitud:', nombre, password);
 
   try {
     const { token, userId } = await usuarioController.logearUsuario(nombre, password);
-    console.log('Respuesta del controlador:', { token, userId }); // Log de la respuesta completa
-    res.cookie('token', token, { httpOnly: true, secure: true });
-    res.cookie('userId', userId, { httpOnly: true, secure: true });
+    res.cookie('token', token, { httpOnly: true, secure: true }); // Configurar la cookie para el token
+    res.cookie('userId', userId, { httpOnly: true, secure: true }); // Configurar la cookie para el userId
     console.log('Token almacenado en cookie:', token);
     console.log('UserId almacenado en cookie:', userId);
     console.log('Logeado correctamente');
-    res.redirect('/');
+    res.redirect('/'); // Redirige a una ruta protegida después del login
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Error interno del servidor');

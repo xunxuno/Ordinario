@@ -205,7 +205,6 @@ document.getElementById('multiStepForm').addEventListener('submit', function(eve
         fly: formData.get('fly'),
         cantidad: formData.get('cantidad'),
         flightPrice: currentFlightPrice,
-        date: formData.get('date'),
         hotel: formData.get('hotel'),
         noches: formData.get('noches'),
         hotelPrice: currentHotelPrice
