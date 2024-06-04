@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Resumen de Viaje
+
+  div.viaje-info
+    h2 Detalles del Vuelo
+    if vuelo
+      p Destino: #{vuelo.destino}
+      p Tipo de Vuelo: #{vuelo.tipoVuelo} (optional property)
+      p Fecha del Vuelo: #{new Date(vuelo.fechaVuelo).toLocaleDateString()}
+      p Precio del Vuelo: $#{vuelo.precioVuelo} MXN
+    else
+      p No hay información disponible sobre el vuelo.
+  
+

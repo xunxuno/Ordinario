@@ -1,0 +1,59 @@
+extends('layout')
+
+block content
+  h1 Resumen del viaje
+
+  section.vuelo
+    h2 Vuelo
+    ul
+      li
+        span.etiqueta Destino:
+        span #{vuelo[0].destino}
+      li
+        span.etiqueta Tipo de vuelo:
+        span #{vuelo[0].vuelo}
+      li
+        span.etiqueta Cantidad de boletos:
+        span #{vuelo[0].cantidad_boletos}
+      li
+        span.etiqueta Precio del vuelo:
+        span #{vuelo[0].precio_vuelo}
+      li
+        span.etiqueta Fecha del vuelo:
+        span #{vuelo[0].fecha_vuelo}
+      li
+        span.etiqueta Alojamiento:
+        span #{vuelo[0].hotel}
+      li
+        span.etiqueta Noches de hospedaje:
+        span #{vuelo[0].noches_hospedaje}
+      li
+        span.etiqueta Precio del hotel:
+        span #{vuelo[0].precio_hotel}
+
+  section.equipaje
+    h2 Equipaje
+    ul
+      each equipajeItem in equipaje
+        li
+          span.etiqueta Elemento:
+          span #{equipajeItem.elemento}
+          span.cantidad (x#{equipajeItem.cantidad})
+
+  section.gastos
+    h2 Gastos
+    ul
+      each gastoItem in gastos
+        li
+          span.etiqueta Concepto:
+          span #{gastoItem.concepto}
+          span.precio ($#{gastoItem.precio})
+
+  section.actividades
+    h2 Actividades
+    ul
+      each actividadItem in actividades
+        li
+          span.etiqueta ID de ubicación:
+          span #{actividadItem.id_ubicacion}
+

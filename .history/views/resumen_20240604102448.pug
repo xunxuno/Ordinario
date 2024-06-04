@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    .mainContainer
+        .center-text
+        h1 Resumen de tu viaje
+
+        p Destino: #{resumen.vuelo[0].destino}
+
+        p Precio del vuelo: $#{resumen.vuelo[0].precio_vuelo}
+
+        h2 Hospedaje
+
+        p Hotel: #{resumen.vuelo[0].hotel}
+
+        for equipajeItem in resumen.equipaje
+            p Descripcion: #{equipajeItem.descripcion}
+            p Precio: #{equipajeItem.precio}
+        endfor
+        for gastoItem in resumen.gastos
+        <p>
+            Descripcion: #{gastoItem.descripcion}
+            Precio: #{gastoItem.precio}
+        </p>
+        endfor
+        for actividadItem in resumen.actividades
+        <p>
+            Nombre: #{actividadItem.nombre}
+            Descripcion: #{actividadItem.descripcion}
+            Precio: #{actividadItem.precio}
+        </p>
+        endfo

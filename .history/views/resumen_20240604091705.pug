@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Resumen de Viaje
+
+  div.viaje-info
+    each resumen.equipaje as equipaje
+        p #{equipaje.objeto}
+

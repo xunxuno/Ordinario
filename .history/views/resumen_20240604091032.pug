@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Resumen de Viaje
+
+  div.viaje-info
+    h2 Detalles del Vuelo
+    p Destino: #{vuelo.destino}
+    p Tipo de Vuelo: #{vuelo.tipoVuelo}
+    p Fecha del Vuelo: #{new Date(vuelo.fechaVuelo).toLocaleDateString()}
+    p Precio del Vuelo: $#{vuelo.precioVuelo} MXN
+
+  div.hospedaje-info
+    h2 Detalles del Hospedaje
+    p Hotel: #{vuelo.hotel}
+    p Noches de Hospedaje: #{vuelo.nochesHospedaje}
+    p Precio del Hospedaje: $#{vuelo.precioHospedaje} MXN
+
+  div.equipaje-info
+    h2 Equipaje
+    ul
+      each elemento in equipaje
+        li #{elemento.elemento}: #{elemento.cantidad}
+
+  div.gastos-info
+    h2 Gastos
+    ul
+      each gasto in gastos
+        li #{gasto.concepto}: $#{gasto.precio} MXN
+
+  div.actividades-info
+    h2 Actividades
+    ul
+      each actividad in actividades
+        li #{actividad.idUbicacion}
+

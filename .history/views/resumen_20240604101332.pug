@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    .mainContainer
+        .center-text
+        h1 Resumen de tu viaje
+
+        p Destino: #{resumen.object}
+
+        p Precio del vuelo: $#{precioVuelo}
+
+        h2 Hospedaje
+
+        p Hotel: #{nombreHotel}
