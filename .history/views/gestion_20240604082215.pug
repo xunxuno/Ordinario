@@ -25,6 +25,7 @@ block content
                 h2 Actividades
                 each ubicacion in ubicaciones
                     h3 #{ubicacion.ubicacion_de_interes}
+                    h3 #{ubicacion.id} id
                     form(action="/gestion/agregar-actividad", method="POST")
                         input(type="hidden", name="idUbicacion", value=ubicacion.id)
                         input(type="hidden", name="vueloId", value=vueloData.id)

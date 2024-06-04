@@ -34,7 +34,6 @@ router.post('/gestion/:id', async (req, res) => {
             cantidad_boletos: req.body.cantidad_boletos,
         };
         const ubicaciones = await viajeController.obtenerUbicacionPorHotel(req.body.hotel);
-        console.log({ubicaciones});
         res.render('gestion', { vueloData, ubicaciones  });
     } catch (error) {
         console.error('Error al procesar la solicitud:', error);

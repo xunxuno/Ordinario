@@ -6,8 +6,8 @@ const viajeController = require('../controllers/viajeController');
 // Manejar la solicitud POST para agregar una actividad al vuelo
 router.post('/agregar-actividad', async (req, res) => {
     try {
-        const { idUbicacion, vueloId } = req.body;
-        await viajeController.registrarActividad(idUbicacion, vueloId);
+        const { vueloId, id, } = req.body;
+        await viajeController.registrarActividad(id, vueloId);
         res.redirect(`/`);
     } catch (error) {
         console.error('Error al agregar actividad:', error);

@@ -105,7 +105,7 @@ async function ObtenerGastos(vueloId){
 
 async function registrarActividad(idUbicacion, vueloId) {
     try {
-        const response = await axios.post('http://localhost:3002/api/registrar-actividad',{
+        const response = await axios.post('http://localhost:3002/api/registrar-gasto',{
             dataActividad:{
                 idUbicacion,
                 vueloId
@@ -135,7 +135,7 @@ async function obtenerUbicacionPorHotel(hotel){
         console.log('Respuesta de la API:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error al obtener ubicaciones', error);
+        console.error('Error al obtener Resumen', error);
         throw error;
     }
 }
@@ -161,7 +161,6 @@ module.exports = {
     ObtenerGastos,
     registrarActividad,
     ObtenerActividad,
-    obtenerResumenVuelo,
-    obtenerUbicacionPorHotel
+    obtenerResumenVuelo
 
 };

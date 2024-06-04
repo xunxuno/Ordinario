@@ -20,6 +20,7 @@ block content
                     p Precio del Hospedaje: $#{vueloData.precio_hotel} MXN
             else
                 p No hay datos del vuelo para gestionar.
+
             //- Actividades
             .actividades
                 h2 Actividades
@@ -28,9 +29,10 @@ block content
                     form(action="/gestion/agregar-actividad", method="POST")
                         input(type="hidden", name="idUbicacion", value=ubicacion.id)
                         input(type="hidden", name="vueloId", value=vueloData.id)
+                        .form-group
                         button(type="submit") Agregar Actividad
 
-            //- Equipaje
+                        //- Equipaje
             .equipaje
                 h2 Equipaje
                 if equipaje && equipaje.length

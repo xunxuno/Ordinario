@@ -105,7 +105,7 @@ async function ObtenerGastos(vueloId){
 
 async function registrarActividad(idUbicacion, vueloId) {
     try {
-        const response = await axios.post('http://localhost:3002/api/registrar-actividad',{
+        const response = await axios.post('http://localhost:3002/api/registrar-gasto',{
             dataActividad:{
                 idUbicacion,
                 vueloId
