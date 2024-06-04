@@ -47,10 +47,10 @@ async function historialVuelos(userId){
     }
 }
 
-async function registrarEquipaje(userId, id_vuelo, elemento, cantidad) {
+async function registrarEquipaje(userId, id_vuelo, elemento, cantidad){
     try {
-        const response = await axios.post('http://localhost:3002/api/equipaje', {
-            dataEquipaje: {
+        const response = await axios.post('http://localhost:3002/api/equipaje',{
+            dataEquipaje:{
                 userId,
                 id_vuelo,
                 elemento,
@@ -59,7 +59,7 @@ async function registrarEquipaje(userId, id_vuelo, elemento, cantidad) {
         });
         return response.data;
     } catch (error) {
-        console.error('error al registrar el equipaje:', error);
+        console.error('error al registrar el equipaje: ', error);
         throw error;
     }
 }
@@ -118,24 +118,13 @@ async function registrarActividad(idUbicacion, vueloId) {
     }
 }
 
-async function ObtenerActividad(vueloId){
+async function ObtenerGastos(vueloId){
     try {
-        const response = await axios.get(`http://localhost:3002/api/historial-actividad/${vueloId}`);
+        const response = await axios.get(`http://localhost:3002/api/gastos-historial/${vueloId}`);
         console.log('Respuesta de la API:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error al obtener actividades', error);
-        throw error;
-    }
-}
-
-async function obtenerResumenVuelo(vueloId){
-    try {
-        const response = await axios.get(`http://localhost:3002/api/resumen/${vueloId}`);
-        console.log('Respuesta de la API:', response.data);
-        return response.data;
-    } catch (error) {
-        console.error('Error al obtener Resumen', error);
+        console.error('Error al obtener el gasto', error);
         throw error;
     }
 }
@@ -147,9 +136,5 @@ module.exports = {
     registrarEquipaje,
     ObtenerEquipaje,
     registrarGastos,
-    ObtenerGastos,
-    registrarActividad,
-    ObtenerActividad,
-    obtenerResumenVuelo
-
+    ObtenerGastos
 };

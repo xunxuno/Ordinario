@@ -24,22 +24,15 @@ async function historialVuelos(userId) {
 }
 
 
-router.post('/gestion/:id', async (req, res) => {
+router.post('/detalles_viaje/gestion/:id', async (req, res) => {
     try {
         const vueloId = req.params.id;
-        const vueloData = {
-            id: req.params.id, // Aquí usamos el vueloId obtenido de los parámetros de la ruta
-            destino: req.body.destino,
-            vuelo: req.body.vuelo,
-            cantidad_boletos: req.body.cantidad_boletos,
-            // Agrega aquí los otros campos del formulario
-        };
-        res.render('gestion', { vueloData });
+        // Lógica para gestionar el vuelo con el ID proporcionado
+        res.send(`Gestionando vuelo con ID: ${vueloId}`);
     } catch (error) {
         console.error('Error al procesar la solicitud:', error);
         res.status(500).send('Error interno del servidor');
     }
 });
-
 
 module.exports = router;

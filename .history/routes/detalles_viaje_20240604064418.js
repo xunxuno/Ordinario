@@ -28,7 +28,6 @@ router.post('/gestion/:id', async (req, res) => {
     try {
         const vueloId = req.params.id;
         const vueloData = {
-            id: req.params.id, // Aquí usamos el vueloId obtenido de los parámetros de la ruta
             destino: req.body.destino,
             vuelo: req.body.vuelo,
             cantidad_boletos: req.body.cantidad_boletos,
@@ -40,6 +39,5 @@ router.post('/gestion/:id', async (req, res) => {
         res.status(500).send('Error interno del servidor');
     }
 });
-
 
 module.exports = router;

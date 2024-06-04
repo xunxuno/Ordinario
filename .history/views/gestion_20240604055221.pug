@@ -9,7 +9,6 @@ block content
             if vueloData
                 .vuelo-detalle
                     h2 Resumen del Viaje
-                    p Destino: #{vueloData.id}
                     p Destino: #{vueloData.destino}
                     p Vuelo: #{vueloData.vuelo}
                     p Cantidad de Boletos: #{vueloData.cantidad_boletos}
@@ -27,7 +26,7 @@ block content
                 if actividades && actividades.length
                     each actividad in actividades
                         p Actividad: #{actividad.nombre}, Fecha: #{new Date(actividad.fecha).toLocaleDateString()}
-                form(action="/gestion/agregar-actividad", method="POST") // Apuntamos a gestion/agregar-actividad en gestion.js
+                form(action="/detalles_viaje/agregar-actividad", method="POST")
                     input(type="hidden", name="vueloId", value=vueloData.id)
                     .form-group
                         label(for="actividad") Actividad
@@ -43,7 +42,7 @@ block content
                 if equipaje && equipaje.length
                     each item in equipaje
                         p Elemento: #{item.elemento}, Cantidad: #{item.cantidad}
-                form(action="/gestion/agregar-equipaje", method="POST") // Apuntamos a gestion/agregar-equipaje en gestion.js
+                form(action="/detalles_viaje/agregar-equipaje", method="POST")
                     input(type="hidden", name="vueloId", value=vueloData.id)
                     .form-group
                         label(for="equipaje") Equipaje
@@ -59,7 +58,7 @@ block content
                 if gastos && gastos.length
                     each gasto in gastos
                         p Concepto: #{gasto.concepto}, Precio: $#{gasto.precio} MXN
-                form(action="/gestion/agregar-gasto", method="POST") // Apuntamos a gestion/agregar-gasto en gestion.js
+                form(action="/detalles_viaje/agregar-gasto", method="POST")
                     input(type="hidden", name="vueloId", value=vueloData.id)
                     .form-group
                         label(for="gasto") Gasto

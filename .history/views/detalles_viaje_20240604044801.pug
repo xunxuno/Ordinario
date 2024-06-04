@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    .mainContainer
+        .center-text
+            h1 Mis Viajes
+            each vuelo in historialVuelo
+                .historial-item
+                    p Destino: #{vuelo.destino}
+                    p Vuelo: #{vuelo.vuelo}
+                    p Cantidad de Boletos: #{vuelo.cantidad_boletos}
+                    p Precio del Vuelo: $#{vuelo.precio_vuelo} MXN
+                    p Fecha del Vuelo: #{new Date(vuelo.fecha_vuelo).toLocaleDateString()}
+                    p Hotel: #{vuelo.hotel}
+                    p Noches de Hospedaje: #{vuelo.noches_hospedaje}
+                    p Precio del Hospedaje: $#{vuelo.precio_hotel} MXN
+                    .btnGestion
+                        form(action="/gestion" method="POST" input type="hidden" name="destino" value="#{vuelo.destino}")
+                            input(type="hidden" name="vuelo" value="#{vuelo.vuelo}")
+                            input(type="hidden" name="cantidad_boletos" value="#{vuelo.cantidad_boletos}")
+                            input(type="hidden" name="precio_vuelo" value="#{vuelo.precio_vuelo}")
+                            input(type="hidden" name="fecha_vuelo" value="#{vuelo.fecha_vuelo}")
+                            input(type="hidden" name="hotel" value="#{vuelo.hotel}")
+                            input(type="hidden" name="noches_hospedaje" value="#{vuelo.noches_hospedaje}")
+                            input(type="hidden" name="precio_hotel" value="#{vuelo.precio_hotel}")
+                        button(type="submit")Gestionar Viaje
+
+

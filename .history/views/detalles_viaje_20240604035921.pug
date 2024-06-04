@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    .mainContainer
+        .center-text
+            h1 Mis Viajes
+            each vuelo in historialVuelo
+                .historial-item
+                    p Destino: #{vuelo.destino}
+                    p Vuelo: #{vuelo.vuelo}
+                    p Cantidad de Boletos: #{vuelo.cantidad_boletos}
+                    p Precio del Vuelo: $#{vuelo.precio_vuelo} MXN
+                    p Fecha del Vuelo: #{new Date(vuelo.fecha_vuelo).toLocaleDateString()}
+                    p Hotel: #{vuelo.hotel}
+                    p Noches de Hospedaje: #{vuelo.noches_hospedaje}
+                    p Precio del Hospedaje: $#{vuelo.precio_hotel} MXN
+                    .btnGestion
+                    form(action="/gestion", method="POST")  input(type="hidden", name="historialVuelo", value="#{JSON.stringify(vuelo)}")  button(type="submit") Gestionar Viaje
+

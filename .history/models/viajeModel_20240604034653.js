@@ -47,10 +47,10 @@ async function historialVuelos(userId){
     }
 }
 
-async function registrarEquipaje(userId, id_vuelo, elemento, cantidad) {
+async function registrarEquipaje(userId, id_vuelo, elemento, cantidad){
     try {
-        const response = await axios.post('http://localhost:3002/api/equipaje', {
-            dataEquipaje: {
+        const response = await axios.post('http://localhost:3002/api/equipaje',{
+            dataEquipaje:{
                 userId,
                 id_vuelo,
                 elemento,
@@ -59,7 +59,7 @@ async function registrarEquipaje(userId, id_vuelo, elemento, cantidad) {
         });
         return response.data;
     } catch (error) {
-        console.error('error al registrar el equipaje:', error);
+        console.error('error al registrar el equipaje: ', error);
         throw error;
     }
 }
@@ -150,6 +150,5 @@ module.exports = {
     ObtenerGastos,
     registrarActividad,
     ObtenerActividad,
-    obtenerResumenVuelo
 
 };

@@ -15,7 +15,7 @@ block content
                     p Noches de Hospedaje: #{vuelo.noches_hospedaje}
                     p Precio del Hospedaje: $#{vuelo.precio_hotel} MXN
                     .btnGestion
-                        form(action=`/detalles_viaje/gestion/${vuelo.id}`, method="POST")
+                        form(action="/gestion", method="POST")
                             input(type="hidden", name="destino", value=vuelo.destino)
                             input(type="hidden", name="vuelo", value=vuelo.vuelo)
                             input(type="hidden", name="cantidad_boletos", value=vuelo.cantidad_boletos)

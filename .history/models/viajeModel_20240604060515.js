@@ -64,17 +64,6 @@ async function registrarEquipaje(userId, id_vuelo, elemento, cantidad) {
     }
 }
 
-async function ObtenerEquipaje(vueloId){
-    try {
-        const response = await axios.get(`http://localhost:3002/api/equipajeHistorial/${vueloId}`);
-        console.log('Respuesta de la API:', response.data);
-        return response.data;
-    } catch (error) {
-        console.error('Error al obtener el equipaje', error);
-        throw error;
-    }
-}
-
 async function registrarGastos(userId, vueloId, concepto, precio) {
     try {
         const response = await axios.post('http://localhost:3002/api/registrar-gasto',{

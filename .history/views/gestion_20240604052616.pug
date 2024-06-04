@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .mainContainer
+        .center-text
+            h1 Gestión del Viaje
+            if vueloData
+                .vuelo-detalle
+                    p Destino: #{vueloData.destino}
+                    p Vuelo: #{vueloData.vuelo}
+                    p Cantidad de Boletos: #{vueloData.cantidad_boletos}
+                    p Precio del Vuelo: $#{vueloData.precio_vuelo} MXN
+                    p Fecha del Vuelo: #{new Date(vueloData.fecha_vuelo).toLocaleDateString()}
+                    p Hotel: #{vueloData.hotel}
+                    p Noches de Hospedaje: #{vueloData.noches_hospedaje}
+                    p Precio del Hospedaje: $#{vueloData.precio_hotel} MXN
+            else
+                p No hay datos del vuelo para gestionar.

@@ -6,29 +6,28 @@ block content
             h1 Gestión del Viaje
 
             //- Resumen del viaje
-            if vueloData
+            if resumen
                 .vuelo-detalle
                     h2 Resumen del Viaje
-                    p Destino: #{vueloData.id}
-                    p Destino: #{vueloData.destino}
-                    p Vuelo: #{vueloData.vuelo}
-                    p Cantidad de Boletos: #{vueloData.cantidad_boletos}
-                    p Precio del Vuelo: $#{vueloData.precio_vuelo} MXN
-                    p Fecha del Vuelo: #{new Date(vueloData.fecha_vuelo).toLocaleDateString()}
-                    p Hotel: #{vueloData.hotel}
-                    p Noches de Hospedaje: #{vueloData.noches_hospedaje}
-                    p Precio del Hospedaje: $#{vueloData.precio_hotel} MXN
+                    p Destino: #{resumen.destino}
+                    p Vuelo: #{resumen.vuelo}
+                    p Cantidad de Boletos: #{resumen.cantidad_boletos}
+                    p Precio del Vuelo: $#{resumen.precio_vuelo} MXN
+                    p Fecha del Vuelo: #{new Date(resumen.fecha_vuelo).toLocaleDateString()}
+                    p Hotel: #{resumen.hotel}
+                    p Noches de Hospedaje: #{resumen.noches_hospedaje}
+                    p Precio del Hospedaje: $#{resumen.precio_hotel} MXN
             else
                 p No hay datos del vuelo para gestionar.
 
             //- Actividades
             .actividades
                 h2 Actividades
-                if actividades && actividades.length
+                if actividades.length
                     each actividad in actividades
                         p Actividad: #{actividad.nombre}, Fecha: #{new Date(actividad.fecha).toLocaleDateString()}
-                form(action="/gestion/agregar-actividad", method="POST") // Apuntamos a gestion/agregar-actividad en gestion.js
-                    input(type="hidden", name="vueloId", value=vueloData.id)
+                form(action="/agregar-actividad", method="POST")
+                    input(type="hidden", name="vueloId", value=resumen.id)
                     .form-group
                         label(for="actividad") Actividad
                         input(type="text", name="actividad", id="actividad", required)
@@ -40,11 +39,11 @@ block content
             //- Equipaje
             .equipaje
                 h2 Equipaje
-                if equipaje && equipaje.length
+                if equipaje.length
                     each item in equipaje
                         p Elemento: #{item.elemento}, Cantidad: #{item.cantidad}
-                form(action="/gestion/agregar-equipaje", method="POST") // Apuntamos a gestion/agregar-equipaje en gestion.js
-                    input(type="hidden", name="vueloId", value=vueloData.id)
+                form(action="/agregar-equipaje", method="POST")
+                    input(type="hidden", name="vueloId", value=resumen.id)
                     .form-group
                         label(for="equipaje") Equipaje
                         input(type="text", name="equipaje", id="equipaje", required)
@@ -56,11 +55,11 @@ block content
             //- Gastos
             .gastos
                 h2 Gastos
-                if gastos && gastos.length
+                if gastos.length
                     each gasto in gastos
                         p Concepto: #{gasto.concepto}, Precio: $#{gasto.precio} MXN
-                form(action="/gestion/agregar-gasto", method="POST") // Apuntamos a gestion/agregar-gasto en gestion.js
-                    input(type="hidden", name="vueloId", value=vueloData.id)
+                form(action="/agregar-gasto", method="POST")
+                    input(type="hidden", name="vueloId", value=resumen.id)
                     .form-group
                         label(for="gasto") Gasto
                         input(type="text", name="gasto", id="gasto", required)

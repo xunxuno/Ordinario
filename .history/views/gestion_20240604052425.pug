@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .mainContainer
+        .center-text
+            h1 Gestiona tu viaje! 
+                .actividadesContainer
+                    h2 Actividades
+                    form(action="/actividades", method="POST")
+                        button(type="submit") Añadir Actividad 
+                .equipajeContianer
+                    h2 Equipaje
+                    form(action="/equipaje", method="POST")
+                    label(for="elemento") Elemento
+                    br
+                    input(type="text", id="elemento", name="elemento", required)
+                        button(type="submit") Añadir Equipaje 
+                .gastosContainer 
+                    h2 Gastos
+                    form(action="/gastos", method="POST")
+                        button(type="submit") Añadir gastos     
+                .resumenContainer
+                    h2 Resumen del viaje
+                    form(action="/resumen", method="GET")
+                        button(type="submit") Ver el resumen del viaje               
