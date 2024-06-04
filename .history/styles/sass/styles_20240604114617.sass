@@ -1,0 +1,185 @@
+
+$mainColor: #F7E025   
+$backgroundColor: #1E171F
+$secundaryColor: #EFEFEF
+$Colortwo: #666
+    
+html
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+body
+    background-color: $backgroundColor
+
+h1 
+    color: white
+
+h2 
+    color: white
+
+p 
+    color: white
+
+span
+    color: $mainColor
+
+/* nav  */
+nav
+    display: flex
+    justify-content: space-between
+    padding: 1rem 2rem
+
+nav ul
+    display: flex
+    list-style: none
+    align-items: center
+    gap: 2rem
+
+nav ul li a
+    text-decoration: none
+    color: white
+    padding: 8px 0
+    transition: all
+    transition-duration: 300ms
+    border-bottom: 1px solid $backgroundColor 
+
+    &:hover
+        border-bottom: 1px solid $mainColor
+        color: $mainColor
+
+/* Formulario con slides */
+
+
+form 
+    max-width: 400px
+    margin: 50px auto
+    padding: 20px
+    border: 1px solid #ccc
+    border-radius: 10px
+    position: relative
+    overflow: hidden
+    height: auto
+
+
+.slides-container 
+    display: flex
+    transition: transform 0.5s ease-in-out
+    height: 100%
+    width: 300%
+    padding: 0
+    text-align: justify
+
+    option
+        border-radius: 5px
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+        padding: 20px
+        font-size: 16px
+        border: 1px solid #ccc
+
+
+.slide 
+    min-width: 100%
+    opacity: 1
+    transition: opacity 0.5s
+    flex-shrink: 0
+
+
+label
+    color: white
+
+button 
+    margin-top: 10px
+    border-radius: 5px
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+    padding: 20px
+    font-size: 16px
+    border: 1px solid #ccc
+
+
+
+
+
+
+
+    
+    
+/* login */
+.loginContainer 
+    margin-top: 40px
+    align-items: center
+    max-width: 400px
+    margin: 50px auto
+    padding: 20px
+    background-color: $secundaryColor
+    border-radius: 5px
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+    h2
+        color: black
+    label
+        color: black
+    input
+        width: 100%
+        padding: 10px
+        font-size: 16px
+        border: 1px solid #ccc
+        border-radius: 5px
+
+.form-group 
+    margin-bottom: 20px
+
+/*.loginContainer
+    label
+        display: block
+        margin-bottom: 5px
+        color: black*/
+
+
+/* Registro */
+.containerRegistro
+    margin-top: 40px
+    max-width: 400px
+    height: auto
+    margin: 50px auto
+    padding: 20px
+    background-color: $secundaryColor
+    border-radius: 5px
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+    h2
+        color: black
+    form
+        height: auto
+    label
+        color: black
+    input
+        width: 100%
+        padding: 10px
+        font-size: 16px
+        border: 1px solid #ccc
+        border-radius: 5px
+
+/* otros */
+.center-text
+    margin: 0 auto
+    max-width: 800px
+    text-align: center
+
+.historial-item 
+    border: 1px solid #ccc
+    border-radius: 5px
+    padding: 10px
+    margin-bottom: 10px
+
+.center-text
+    margin: 0 auto
+    max-width: 800px
+    text-align: center
+
+
+
+
+
+
+.container
+    max-width: 600px
+    margin: 0 auto

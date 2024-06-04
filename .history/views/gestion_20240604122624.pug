@@ -1,0 +1,48 @@
+extends layout
+
+block content
+    .mainContainer
+        .center-text
+            h1 Gestión del Viaje
+
+            .actividades
+                h2 Actividades
+                each ubicacion in ubicaciones
+                    h2 Ubicacion: #{ubicacion.ubicacion_de_interes}
+                    h2 costo de transporte: #{ubicacion.costo_transporte} MXN
+                    form(action="/gestion/agregar-actividad", method="POST")
+                        input(type="hidden", name="idUbicacion", value=ubicacion.id)
+                        input(type="hidden", name="vueloId", value=vueloData.id)
+                        button(type="submit") Agregar Actividad
+
+            //- Equipaje
+            .equipaje
+                h2 Equipaje
+                if equipaje && equipaje.length
+                    each item in equipaje
+                        p Elemento: #{item.elemento}, Cantidad: #{item.cantidad}
+                form(action="/gestion/agregar-equipaje", method="POST")
+                    input(type="hidden", name="vueloId", value=vueloData.id)
+                    .form-group
+                        label(for="equipaje") Equipaje
+                        input(type="text", name="equipaje", id="equipaje", required)
+                    .form-group
+                        label(for="cantidad") Cantidad
+                        input(type="number", name="cantidad", id="cantidad", required)
+                    button(type="submit") Agregar Equipaje
+
+            //- Gastos
+            .gastos
+                h2 Gastos
+                if gastos && gastos.length
+                    each gasto in gastos
+                        p Concepto: #{gasto.concepto}, Precio: $#{gasto.precio} MXN
+                form(action="/gestion/agregar-gasto", method="POST") 
+                    input(type="hidden", name="vueloId", value=vueloData.id)
+                    .form-group
+                        label(for="gasto") Gasto
+                        input(type="text", name="gasto", id="gasto", required)
+                    .form-group
+                        label(for="monto") Monto
+                        input(type="number", name="monto", id="monto", required)
+                    button(type="submit") Agregar Gasto

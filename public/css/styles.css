@@ -8,6 +8,15 @@ body {
   background-color: #1E171F;
 }
 
+.title {
+  text-align: center;
+  min-width: auto;
+}
+.title h5 {
+  color: #F7E025;
+  font-size: 90px;
+}
+
 h1 {
   color: white;
 }
@@ -25,10 +34,19 @@ span {
 }
 
 /* nav  */
+.divnav {
+  align-items: center;
+  align-content: center;
+  display: flex;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
+  align-content: center;
   padding: 1rem 2rem;
+  margin: left 30rem;
+  margin-right: 30rem;
 }
 
 nav ul {
@@ -36,12 +54,14 @@ nav ul {
   list-style: none;
   align-items: center;
   gap: 2rem;
+  text-align: center;
 }
 
 nav ul li a {
   text-decoration: none;
   color: white;
   padding: 8px 0;
+  display: block;
   transition: all;
   transition-duration: 300ms;
   border-bottom: 1px solid #1E171F;
@@ -68,23 +88,83 @@ form {
   transition: transform 0.5s ease-in-out;
   height: 100%;
   width: 300%;
+  padding: 0;
+  text-align: justify;
+}
+.slides-container option {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
 }
 
 .slide {
   min-width: 100%;
+  max-height: auto;
   opacity: 1;
   transition: opacity 0.5s;
   flex-shrink: 0;
+  align-content: center;
+}
+.slide p label input {
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  display: flex;
 }
 
 label {
   color: white;
+  margin-left: 20px;
 }
 
 button {
-  margin-top: 10px;
+  margin-top: 40px;
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
 }
 
+button:hover {
+  background-color: #F7E025;
+}
+
+select {
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  display: flex;
+}
+
+/* #hotelPrice
+ *  align-content: center
+ *  #flightPrice
+ *      margin-left: 20px
+ *      margin-right: 20px
+ *      border-radius: 5px
+ *      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+ *      padding: 10px
+ *      font-size: 16px
+ *      border: 1px solid #ccc
+ *      display: flex
+ *  #cantidad
+ *      margin-left: 20px
+ *      border-radius: 5px
+ *      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+ *      padding: 10px
+ *      font-size: 16px
+ *      border: 1px solid #ccc
+ *      display: flex */
 /* login */
 .loginContainer {
   margin-top: 40px;
@@ -158,13 +238,119 @@ button {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  text-align: justify;
+  height: auto;
+}
+.historial-item p {
+  margin-left: 40%;
+  margin-right: 40%;
+  border: 0;
+  padding: 10px;
+  font-size: 20px;
+  display: flex;
+  text-align: center;
 }
 
 .center-text {
   margin: 0 auto;
   max-width: 800px;
   text-align: center;
+}
+.center-text h1 {
+  color: #F7E025;
+}
+
+.btnGestion {
+  border: 0;
+  align-content: center;
+  align-items: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  display: flex;
+  top: 0;
+}
+
+form {
+  border: 0;
+}
+form .mainContainer {
+  height: auto;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.actividades {
+  margin-top: 10%;
+  border: 4px solid #F7E025;
+}
+.actividades h1 {
+  color: #F7E025;
+}
+
+.equipaje {
+  margin-top: 10%;
+  border: 4px solid #F7E025;
+}
+.equipaje h1 {
+  color: #F7E025;
+}
+
+.gastos {
+  margin-top: 10%;
+  border: 4px solid #F7E025;
+}
+.gastos h1 {
+  color: #F7E025;
+}
+
+.resumenContainer {
+  display: flex;
+  border: 1px solid #F7E025;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 0;
+  text-align: justify;
+  height: auto;
+  width: auto;
+}
+.resumenContainer .center-text {
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+}
+.resumenContainer .center-text h1 p {
+  color: #F7E025;
+}
+.resumenContainer .equipaje-item {
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+}
+.resumenContainer .equipaje-item p {
+  color: #F7E025;
+}
+.resumenContainer .gasto-item {
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+}
+.resumenContainer .gasto-item p {
+  color: #F7E025;
+}
+.resumenContainer .actividad-item {
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+}
+.resumenContainer .actividad-item p {
+  color: #F7E025;
 }
 
 /*# sourceMappingURL=styles.css.map */
