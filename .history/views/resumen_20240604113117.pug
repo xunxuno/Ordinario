@@ -28,5 +28,7 @@ block content
         h2 Actividades
         each actividadItem in resumen.actividades
             .actividad-item
-            p Id de la actividad: #{actividadItem.id}
-            
+            p Id: #{actividadItem.id}
+            h2 Ubicacion: #{ubicacion.ubicacion_de_interes}
+            br
+            h2 costo de transporte: #{ubicacion.costo_transporte} MXN
